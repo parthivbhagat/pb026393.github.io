@@ -8,10 +8,10 @@
      
       $.when(pt).done(function(patient){
 		 var gender = patient.gender;
-		 dob = new XDate(patient.birthDate);
-		 age = Math.floor(dob.diffYears(new XDate()));
+		 var dob = new Date(patient.birthDate);
+		 var age = Math.floor(dob.diffYears(new Date()));
 		 var fname = patient.name[0].given.join(" "),
-		 lname = patient.name[0].family.join(" ");
+		 var lname = patient.name[0].family.join(" ");
 		 
 		  p = defaultPatient();
 		  p.birthday = {value:dob};

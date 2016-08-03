@@ -10,7 +10,7 @@
 		 var gender = patient.gender;
 		 var dob = new Date(patient.birthDate);
 		 var age = Math.floor(dob.diffYears(new Date()));
-		 var fname = patient.name[0].given.join(" "),
+		 var fname = patient.name[0].given.join(" ");
 		 var lname = patient.name[0].family.join(" ");
 		 
 		  p = defaultPatient();

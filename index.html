@@ -22,27 +22,13 @@
     
 	<script>
       extractData().then(function(p){
-        var missing_data_array = report_missing_data(p);
-        if (missing_data_array.length > 0) {
-          $('#errors')
-          .show()
-          .html(function(){
-            var out = '<h2>Can\'t Compute Cardiovascular Risk Score</h2><p>Can\'t compute cardiovascular risk score from available data because of the following issues:</p><ul>';
-              $.each(missing_data_array, function(i, v){ out += '<li>' + missing_data_array[i] + '</li>'; }) 
-              return out + '</ul>';
-          });
-
-          return; // abort script
-          } else {
-		 
           $('#holder').show();
-          var table = '<table><thead><th>First name</th><th>Last Name</th><th>Gender</th><th>Birth Date</th><th>Age</th></thead><tbody>';
+          var table = '<table><thead><th>First Name</th><th>Last Name</th><th>Gender</th><th>Birth Date</th><th>Age</th></thead><tbody>';
 		  table += '<tr>';						
 		  table += '<td>' + p.givenName.value + '</td>';
 		  table += '<td>' + p.familyName.value + '</td>';
 		  table += '<td>' + p.gender.value + '</td>';
 		  table += '<td>' + p.birthday.value + '</td>';
-		  table += '<td>' + p.age.value + '</td>';
 		  table += '</tr>';
 		  table += '</tbody></table>';
 		  $( '#holder').html(table);
@@ -50,20 +36,11 @@
 
       });
 
-      // checks for data needed to compute risk score. returns a possibly empty array of strings.
-      // if the array is empty everything's ok. TODO: seperate missing and out of range criteria
-      var report_missing_data = function(p){
-        var a = [];
-        if (p.gender.value != 'male' && p.gender.value != 'female') a.push('Gender is required')
-        return a;
-      };
     </script>
   </head>
   <body style="margin: none;">
-    <h1> Hello World </h1>
-    <div id='errors' style='display: none; width: 600px; margin: 100px auto;'></div>
     <div id='holder' style='display: none; height: 1200px; width: 780px;'>
     </div>
-    <div id='log'></div>
+   
   </body>
 </html>

@@ -1,28 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <!--
-  Original Design: David McCandless & Stefanie Posavec for Wired Magazine <http://informationisbeautiful.net>
-  Implementation: Arjun Sanyal <arjun.sanyal@childrens.harvard.edu>
-  -->
+  
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>SMART ON FHIR STARTER APP</title>
-    <style>
-      #errors {
-        font-size: 16px;
-        font-family: Calibri, "Helvetica Neue", Helvetica, Verdana, sans-serif;
-        color: #555;
-      }
-    </style>
-
-    <script src="./lib/fhir-client.js"></script>
+   
+   <script src="./lib/fhir-client.js"></script>
     <script src='./load_data.js'></script>
     <script src='./lib/jquery.min.js'></script>
     
 	<script>
       extractData().then(function(p){
-          $('#holder').show();
+          
           var table = '<table><thead><th>First Name</th><th>Last Name</th><th>Gender</th><th>Birth Date</th></thead><tbody>';
 		  table += '<tr>';						
 		  table += '<td>' + p.givenName.value + '</td>';
@@ -39,7 +29,7 @@
   </head>
   <body style="margin: none;">
     <h1>SMART on FHIR STARTER APP ( PATIENT DEMOGRAPHICS)</h1>
-    <div id='holder' style='display: none; height: 1200px; width: 780px;'>
+    <div id='holder' style='display: none;'>
     </div>
    
   </body>

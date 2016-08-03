@@ -20,6 +20,34 @@
 
     <script src='./lib/jquery.min.js'></script>
     
+	<script>
+      extractData().then(function(p){
+        var missing_data_array = report_missing_data(p);
+        if (missing_data_array.length > 0) {
+          $('#errors')
+          .show()
+          .html(function(){
+            var out = '<h2>Can\'t Compute Cardiovascular Risk Score</h2><p>Can\'t compute cardiovascular risk score from available data because of the following issues:</p><ul>';
+              $.each(missing_data_array, function(i, v){ out += '<li>' + missing_data_array[i] + '</li>'; }) 
+              return out + '</ul>';
+          });
+
+          return; // abort script
+          } else {
+          $('#holder').show();
+          alert(p);
+        }			 
+
+      });
+
+      // checks for data needed to compute risk score. returns a possibly empty array of strings.
+      // if the array is empty everything's ok. TODO: seperate missing and out of range criteria
+      var report_missing_data = function(p){
+        var a = [];
+        if (p.gender.value != 'male' && p.gender.value != 'female') a.push('Gender is required')
+        return a;
+      };
+    </script>
   </head>
   <body style="margin: none;">
     <h1> Hello World </h1>

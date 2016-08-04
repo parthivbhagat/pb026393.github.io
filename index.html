@@ -10,25 +10,26 @@
     <script src='./load_data.js'></script>
     <script src='./lib/jquery.min.js'></script>
     
-	<script>
+  <script>
       extractData().then(function(p){
           
-          var table = '<table><thead><th>First Name</th><th>Last Name</th><th>Gender</th><th>Birth Date</th></thead><tbody>';
-		  table += '<tr>';						
-		  table += '<td>' + p.givenName.value + '</td>';
-		  table += '<td>' + p.familyName.value + '</td>';
-		  table += '<td>' + p.gender.value + '</td>';
-		  table += '<td>' + p.birthday.value + '</td>';
-		  table += '</tr>';
-		  table += '</tbody></table>';
-		  $( '#holder').html(table);		 
+          var table = '<table><thead><th>First Name</th><th>Last Name</th><th>Gender</th><th>Birth Date</th><th>Age</th></thead><tbody>';
+      table += '<tr>';            
+      table += '<td>' + p.givenName.value + '</td>';
+      table += '<td>' + p.familyName.value + '</td>';
+      table += '<td>' + p.gender.value + '</td>';
+      table += '<td>' + p.birthday.value + '</td>';
+      table += '<td>' + p.age.value + '</td>';
+      table += '</tr>';
+      table += '</tbody></table>';
+      $( '#holder').html(table);     
 
       });
 
     </script>
   </head>
   <body style="margin: none;">
-    <h1>SMART on FHIR STARTER APP ( PATIENT DEMOGRAPHICS)</h1>
+    <h2>SMART on FHIR STARTER APP ( PATIENT DEMOGRAPHICS)</h2>
     <div id='holder'>
     </div>
    

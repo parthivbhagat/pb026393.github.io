@@ -1,37 +1,25 @@
 <!DOCTYPE html>
-<html>
-  
+<html>  
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>SMART ON FHIR STARTER APP</title>
+    <title>SMART STARTER APP</title>
    
-   <script src="./lib/fhir-client.js"></script>
-    <script src='./load_data.js'></script>
-    <script src='./lib/jquery.min.js'></script>
-    
-  <script>
+    <script>
       extractData().then(function(p){
-          
-          var table = '<table><thead><th>First Name</th><th>Last Name</th><th>Gender</th><th>Birth Date</th><th>Age</th></thead><tbody>';
-      table += '<tr>';            
-      table += '<td>' + p.givenName.value + '</td>';
-      table += '<td>' + p.familyName.value + '</td>';
-      table += '<td>' + p.gender.value + '</td>';
-      table += '<td>' + p.birthday.value + '</td>';
-      table += '<td>' + p.age.value + '</td>';
-      table += '</tr>';
-      table += '</tbody></table>';
-      $( '#holder').html(table);     
-
+        draw_visualization();
       });
 
     </script>
   </head>
   <body style="margin: none;">
-    <h2>SMART on FHIR STARTER APP ( PATIENT DEMOGRAPHICS)</h2>
+    <h2>SMART STARTER APP ( PATIENT DEMOGRAPHICS )</h2>
     <div id='holder'>
     </div>
    
   </body>
+  <script src="./lib/fhir-client.js"></script>
+  <script src='./load_data.js'></script>
+  <script src='./lib/jquery.min.js'></script>
+  <script src='./draw_visualization.js'></script>
 </html>

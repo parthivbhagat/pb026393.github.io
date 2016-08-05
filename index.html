@@ -3,14 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>SMART STARTER APP</title>
-   
-    <script>
-      extractData().then(function(p){
-        draw_visualization();
-      });
-
-    </script>
+    <title>SMART STARTER APP</title>    
   </head>
   <body style="margin: none;">
     <h2>SMART STARTER APP ( PATIENT DEMOGRAPHICS )</h2>
@@ -22,4 +15,10 @@
   <script src='./load_data.js'></script>
   <script src='./lib/jquery.min.js'></script>
   <script src='./draw_visualization.js'></script>
+  <script>
+      extractData().then(function(p){
+        draw_visualization();
+      });
+
+    </script>
 </html>

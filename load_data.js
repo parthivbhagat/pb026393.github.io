@@ -22,7 +22,7 @@
         p = defaultPatient();
         p.birthday = {value:dobStr};
         p.gender = {value:gender};
-        p.fname = value:fname};
+        p.fname = {value:fname};
         p.lname = {value:lname};
         p.age = {value:age};
         ret.resolve(p);

@@ -1,4 +1,4 @@
-var draw_visualization = function() {
+var draw_visualization = function(p) {
     var table = '<table><thead><th>First Name</th><th>Last Name</th><th>Gender</th><th>Birth Date</th><th>Age</th></thead><tbody>';
     table += '<tr>';            
     table += '<td>' + p.givenName.value + '</td>';

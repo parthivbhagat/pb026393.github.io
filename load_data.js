@@ -17,7 +17,7 @@
         
         var fname = patient.name[0].given.join(" ");
         var lname = patient.name[0].family.join(" ");
-        var age = Math.round(calculateAge(dob));
+        var age = parseInt(calculateAge(dob));
         
         p = defaultPatient();
         p.birthday = {value:dobStr};

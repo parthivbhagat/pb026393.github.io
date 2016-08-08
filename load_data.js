@@ -7,10 +7,8 @@
     function onErrorWithWarning(msg){
       console.log("Loading error", arguments);
       ret.reject({
-        responseText: msg,
-        showMessage: true,
-        messageType: 'warning',
-      })
+        responseText: msg
+      });
     };
 
     function onReady(smart){
@@ -18,7 +16,7 @@
       var pt = patient.read();
       
       $.when(pt).fail(function() {
-        onErrorWithWarning(GC.str('STR_Error_LoadingApplication'));
+        onErrorWithWarning('Patient Search Failed');
       });
 
       $.when(pt).done(function(patient){

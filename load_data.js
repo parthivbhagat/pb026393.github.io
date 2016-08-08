@@ -2,10 +2,25 @@
   window.extractData = function() {
     var ret = $.Deferred();
 
-    FHIR.oauth2.ready(function(smart){
+    FHIR.oauth2.ready(onReady, onError);
+
+    function onErrorWithWarning(msg){
+      console.log("Loading error", arguments);
+      ret.reject({
+        responseText: msg,
+        showMessage: true,
+        messageType: 'warning',
+      })
+    };
+
+    function onReady(smart){
       var patient = smart.patient;
       var pt = patient.read();
-     
+      
+      $.when(pt).fail(function() {
+        onErrorWithWarning(GC.str('STR_Error_LoadingApplication'));
+      });
+
       $.when(pt).done(function(patient){
         var gender = patient.gender;
         var dob = new Date(patient.birthDate);     
@@ -28,7 +43,16 @@
         ret.resolve(p);
     
       });
-    });
+    };
+
+
+    function onError(){
+      console.log("Loading error", arguments);
+      ret.reject({
+        responseText: "Loading error. See console for details."
+      });
+    };
+    
     return ret.promise();
   };
   

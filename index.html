@@ -21,7 +21,7 @@
       extractData().then(function(p){
         draw_visualization(p);
       }, function(msg){
-        $('#errors').html('<p>FHIR Service did not return a valid patient</p>');
+        $('#errors').html('<p>'+msg+'</p>');
       });
 
   </script>

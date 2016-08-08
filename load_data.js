@@ -4,20 +4,11 @@
 
     FHIR.oauth2.ready(onReady, onError);
 
-    function onErrorWithWarning(msg){
-      console.log("Loading error", arguments);
-      ret.reject({
-        responseText: msg
-      });
-    };
-
     function onReady(smart){
       var patient = smart.patient;
       var pt = patient.read();
       
-      $.when(pt).fail(function() {
-        onErrorWithWarning('Patient Search Failed');
-      });
+      $.when(pt).fail(onError);
 
       $.when(pt).done(function(patient){
         var gender = patient.gender;
@@ -46,9 +37,7 @@
 
     function onError(){
       console.log("Loading error", arguments);
-      ret.reject({
-        responseText: "Loading error. See console for details."
-      });
+      ret.reject();
     };
     
     return ret.promise();

@@ -18,11 +18,17 @@
   <script src='./lib/jquery.min.js'></script>
   <script src='./draw_visualization.js'></script>
   <script>
-      extractData().then(function(p){
-        draw_visualization(p);
-      }, function(msg){
-        $('#errors').html('<p>'+msg+'</p>');
-      });
+      extractData().then(
+        function(p){
+
+          draw_visualization(p);
+
+        }, function(){
+
+          $('#errors').html('<p> Failed to call FHIR Service</p>');
+
+        }
+      );
 
   </script>
 </html>

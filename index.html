@@ -19,14 +19,12 @@
   <script src='./draw_visualization.js'></script>
   <script>
       extractData().then(
-        function(p){
-
+        function(p) {          
           draw_visualization(p);
+        }, 
 
-        }, function(){
-
+        function() {
           $('#errors').html('<p> Failed to call FHIR Service </p>');
-
         }
       );
 

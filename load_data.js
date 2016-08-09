@@ -36,33 +36,39 @@
     }
 
     function onReady(smart)  {
-      const patient = smart.patient;
-      const pt = patient.read();
+      if (smart.hasOwnProperty('patient')) { 
+        const patient = smart.patient;
+        const pt = patient.read();
+        
+        $.when(pt).fail(onError);
+
+        $.when(pt).done(function(patient) {
+          const gender = patient.gender;
+          const dob = new Date(patient.birthDate);     
+          const day = dob.getDate(); 
+          const monthIndex = dob.getMonth() + 1;
+          const year = dob.getFullYear();
+
+          const dobStr = monthIndex + '/' + day + '/' + year;
+          
+          const fname = patient.name[0].given.join(' ');
+          const lname = patient.name[0].family.join(' ');
+          const age = parseInt(calculateAge(dob));
+          
+          let p = defaultPatient();
+          p.birthday = {value:dobStr};
+          p.gender = {value:gender};
+          p.fname = {value:fname};
+          p.lname = {value:lname};
+          p.age = {value:age};
+          ret.resolve(p);
+        });
+      } else { 
+        onError();
+      }
       
-      $.when(pt).fail(onError);
-
-      $.when(pt).done(function(patient) {
-        const gender = patient.gender;
-        const dob = new Date(patient.birthDate);     
-        const day = dob.getDate(); 
-        const monthIndex = dob.getMonth() + 1;
-        const year = dob.getFullYear();
-
-        const dobStr = monthIndex + '/' + day + '/' + year;
-        
-        const fname = patient.name[0].given.join(' ');
-        const lname = patient.name[0].family.join(' ');
-        const age = parseInt(calculateAge(dob));
-        
-        let p = defaultPatient();
-        p.birthday = {value:dobStr};
-        p.gender = {value:gender};
-        p.fname = {value:fname};
-        p.lname = {value:lname};
-        p.age = {value:age};
-        ret.resolve(p);
     
-      });
+      
     }
 
     FHIR.oauth2.ready(onReady, onError);

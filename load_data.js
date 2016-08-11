@@ -26,7 +26,8 @@
        'lname' : {'value': null},
        'gender' : {'value': null},
        'birthday' : {'value': null},
-       'age' : {'value': null}
+       'age' : {'value': null},
+       'height' : {'value' : null}
       };
     }
 
@@ -39,10 +40,12 @@
       if (smart.hasOwnProperty('patient')) { 
         const patient = smart.patient;
         const pt = patient.read();
-        
-        $.when(pt).fail(onError);
+        const obv = smart.patient.api.fetchAll({type: 'Observation', query: {code: {$or: ['8302-2']}}});
 
-        $.when(pt).done(function(patient) {
+        $.when(pt, obv).fail(onError);
+
+        $.when(pt, obv).done(function(patient) {
+          const byCodes = smart.byCodes(obv, 'code');
           const gender = patient.gender;
           const dob = new Date(patient.birthDate);     
           const day = dob.getDate(); 
@@ -55,12 +58,19 @@
           const lname = patient.name[0].family.join(' ');
           const age = parseInt(calculateAge(dob));
           
+          const height = byCodes('8302-2');
+        
           let p = defaultPatient();
           p.birthday = {value:dobStr};
           p.gender = {value:gender};
           p.fname = {value:fname};
           p.lname = {value:lname};
           p.age = {value:age};
+
+          if(typeof height !== undefined){
+            p.height = {value:height[0].valueQuantity.value};
+          }
+          
           ret.resolve(p);
         });
       } else { 

@@ -67,7 +67,7 @@
           p.lname = {value:lname};
           p.age = {value:age};
 
-          if(typeof height !== undefined){
+          if(typeof height[0] !== 'undefined'){
             p.height = {value:height[0].valueQuantity.value};
           }
           

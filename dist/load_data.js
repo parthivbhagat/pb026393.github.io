@@ -1,7 +1,5 @@
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
 /*jshint esversion: 6 */
 (function (window) {
   window.extractData = function () {
@@ -45,7 +43,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         (function () {
           var patient = smart.patient;
           var pt = patient.read();
-          var obv = smart.patient.api.fetchAll({ type: 'Observation', query: { code: { $or: ['http://loinc.org|8302-2]'] } } });
+          var obv = smart.patient.api.fetchAll({ type: 'Observation', query: { code: { $or: ['8302-2'] } } });
 
           $.when(pt, obv).fail(onError);
 
@@ -71,9 +69,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             p.fname = { value: fname };
             p.lname = { value: lname };
             p.age = { value: age };
-            
-			alert(typeof height);
-			alert(typeof height[0]);
+
             if (typeof height[0] !== 'undefined') {
               p.height = { value: height[0].valueQuantity.value };
             }

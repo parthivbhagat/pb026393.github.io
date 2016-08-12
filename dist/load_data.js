@@ -74,7 +74,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             
 			alert(typeof height);
 			alert(typeof height[0]);
-            if (typeof height[0] !== undefined) {
+            if (typeof height[0] !== 'undefined') {
               p.height = { value: height[0].valueQuantity.value };
             }
 

@@ -45,7 +45,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         (function () {
           var patient = smart.patient;
           var pt = patient.read();
-          var obv = smart.patient.api.fetchAll({ type: 'Observation', query: { code: { $or: ['8302-2'] } } });
+          var obv = smart.patient.api.fetchAll({ type: 'Observation', query: { code: { $or: ['http://loinc.org|8302-2]'] } } });
 
           $.when(pt, obv).fail(onError);
 

@@ -8,7 +8,7 @@ function drawVisualization(p) {
   $('#gender').html(p.gender);
   $('#birthday').html(p.birthday);  
   $('#age').html(p.age);
-  $('#height').html(p.height);
-  $('#systolicbp').html(p.systolicbp);
-  $('#diastolicbp').html(p.diastolicbp);
+  $('#height').html(p.obv.height);
+  $('#systolicbp').html(p.obv.systolicbp);
+  $('#diastolicbp').html(p.obv.diastolicbp);
 }

@@ -1,4 +1,6 @@
 /*jshint esversion: 6 */
+import Observations from './observations';
+
 class Patient {  
   constructor() {
     this.fname = '';
@@ -6,9 +8,7 @@ class Patient {
     this.gender = '';
     this.birthday = '';
     this.age = '';
-    this.height = '';
-    this.systolicbp = '';
-    this.diastolicbp = '';
+    this.obv = new Observations();
   }
 }
 

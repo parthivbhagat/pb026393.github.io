@@ -3,15 +3,14 @@ import Util from './util';
 import Patient from './patient';
 
 class StarterApp {
-  static extractData(){
+  static extractData() {
    
     const ret = $.Deferred();     
     
     function onError() {
       console.log('Loading error', arguments);
       ret.reject();
-    }
-     
+    }     
 
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) { 
@@ -39,23 +38,23 @@ class StarterApp {
           const systolicbp = byCodes('8480-6');
           const diastolicbp = byCodes('8462-4');
         
-          let p = new Patient();
+          let p = new Patient();          
           p.birthday = dobStr;
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
           p.age = parseInt(Util.calculateAge(dob));
 
-          if(typeof height[0] !== 'undefined'){
-            p.height = height[0].valueQuantity.value;
+          if(typeof height[0] !== 'undefined') {
+            p.obv.height = height[0].valueQuantity.value;
           }
           
-          if(typeof systolicbp[0] !== 'undefined'){
-            p.systolicbp = systolicbp[0].valueQuantity.value;
+          if(typeof systolicbp[0] !== 'undefined') {
+            p.obv.systolicbp = systolicbp[0].valueQuantity.value;
           }
 
-          if(typeof diastolicbp[0] !== 'undefined'){
-            p.diastolicbp = diastolicbp[0].valueQuantity.value;
+          if(typeof diastolicbp[0] !== 'undefined') {
+            p.obv.diastolicbp = diastolicbp[0].valueQuantity.value;
           }
 
           ret.resolve(p);

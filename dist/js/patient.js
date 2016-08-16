@@ -4,9 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var _observations = require('./observations');
 
-/*jshint esversion: 6 */
+var _observations2 = _interopRequireDefault(_observations);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /*jshint esversion: 6 */
+
+
 var Patient = function Patient() {
   _classCallCheck(this, Patient);
 
@@ -15,9 +21,7 @@ var Patient = function Patient() {
   this.gender = '';
   this.birthday = '';
   this.age = '';
-  this.height = '';
-  this.systolicbp = '';
-  this.diastolicbp = '';
+  this.obv = new _observations2.default();
 };
 
 exports.default = Patient;

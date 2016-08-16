@@ -158,15 +158,15 @@
 	            p.age = parseInt(_util2.default.calculateAge(dob));
 	
 	            if (typeof height[0] !== 'undefined') {
-	              p.height = height[0].valueQuantity.value;
+	              p.obv.height = height[0].valueQuantity.value;
 	            }
 	
 	            if (typeof systolicbp[0] !== 'undefined') {
-	              p.systolicbp = systolicbp[0].valueQuantity.value;
+	              p.obv.systolicbp = systolicbp[0].valueQuantity.value;
 	            }
 	
 	            if (typeof diastolicbp[0] !== 'undefined') {
-	              p.diastolicbp = diastolicbp[0].valueQuantity.value;
+	              p.obv.diastolicbp = diastolicbp[0].valueQuantity.value;
 	            }
 	
 	            ret.resolve(p);
@@ -235,6 +235,38 @@
 
 /***/ },
 /* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _observations = __webpack_require__(11);
+	
+	var _observations2 = _interopRequireDefault(_observations);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /*jshint esversion: 6 */
+	
+	
+	var Patient = function Patient() {
+	  _classCallCheck(this, Patient);
+	
+	  this.fname = '';
+	  this.lname = '';
+	  this.gender = '';
+	  this.birthday = '';
+	  this.age = '';
+	  this.obv = new _observations2.default();
+	};
+	
+	exports.default = Patient;
+
+/***/ },
+/* 11 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -246,20 +278,15 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	/*jshint esversion: 6 */
-	var Patient = function Patient() {
-	  _classCallCheck(this, Patient);
+	var Observations = function Observations() {
+	  _classCallCheck(this, Observations);
 	
-	  this.fname = '';
-	  this.lname = '';
-	  this.gender = '';
-	  this.birthday = '';
-	  this.age = '';
 	  this.height = '';
 	  this.systolicbp = '';
 	  this.diastolicbp = '';
 	};
 	
-	exports.default = Patient;
+	exports.default = Observations;
 
 /***/ }
 /******/ ]);

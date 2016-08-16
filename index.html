@@ -9,16 +9,30 @@
     <h2>SMART STARTER APP ( PATIENT DEMOGRAPHICS )</h2>
     <div id='errors'>
     </div>
-    <div id='holder'>
+    <div id='holder' style='display:none;'>
+      <table>
+        <thead id='header'>         
+        </thead>
+        <tbody>
+          <tr>
+            <td id='fname'></td>
+            <td id='lname'></td>
+            <td id='gender'></td>
+            <td id='birthday'></td>
+            <td id='age'></td>
+            <td id='height'></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
    
   </body>
   <script src="./lib/fhir-client.js"></script>
-  <script src='./dist/load_data.js'></script>
+  <script src='./dist/js/starter_app.min.js'></script>
   <script src='./lib/jquery.min.js'></script>
-  <script src='./dist/draw_visualization.js'></script>
+  <script src='./dist/js/draw_visualization.js'></script>
   <script>
-      extractData().then(
+      StarterApp.extractData().then(
         function(p) {          
           drawVisualization(p);
         }, 

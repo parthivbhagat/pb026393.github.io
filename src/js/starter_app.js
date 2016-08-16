@@ -17,7 +17,7 @@ class StarterApp {
       if (smart.hasOwnProperty('patient')) { 
         const patient = smart.patient;
         const pt = patient.read();
-        const obv = smart.patient.api.fetchAll({type: 'Observation', query: {code: {$or: ['8302-2']}}});
+        const obv = smart.patient.api.fetchAll({type: 'Observation', query: {code: {$or: ['http://loinc.org|8302-2']}}});
 
         $.when(pt, obv).fail(onError);
 

@@ -32,15 +32,14 @@
   <script src='./lib/jquery.min.js'></script>
   <script src='./dist/js/draw_visualization.js'></script>
   <script>
-      StarterApp.extractData().then(
-        function(p) {          
-          drawVisualization(p);
-        }, 
+    StarterApp.extractData().then(
+      function(p) {          
+        drawVisualization(p);
+      }, 
 
-        function() {
-          $('#errors').html('<p> Failed to call FHIR Service </p>');
-        }
-      );
-
+      function() {
+        $('#errors').html('<p> Failed to call FHIR Service </p>');
+      }
+    );
   </script>
 </html>

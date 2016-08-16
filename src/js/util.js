@@ -9,8 +9,8 @@ class Util{
     let years = now.getFullYear() - d.getFullYear();
     d.setFullYear(d.getFullYear() + years);
     if (d > now) {
-        years--;
-        d.setFullYear(d.getFullYear() - 1);
+      years--;
+      d.setFullYear(d.getFullYear() - 1);
     }
     const days = (now.getTime() - d.getTime()) / (3600 * 24 * 1000);
     return years + days / (this.isLeapYear(now.getFullYear()) ? 366 : 365);

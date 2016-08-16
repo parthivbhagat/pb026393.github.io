@@ -17,7 +17,8 @@ class StarterApp {
       if (smart.hasOwnProperty('patient')) { 
         const patient = smart.patient;
         const pt = patient.read();
-        const obv = smart.patient.api.fetchAll({type: 'Observation', query: {code: {$or: ['http://loinc.org|8302-2']}}});
+        const obv = smart.patient.api.fetchAll({type: 'Observation', query: {code: {$or: ['http://loinc.org|8302-2',
+          'http://loinc.org|8462-4', 'http://loinc.org|8480-6']}}});
 
         $.when(pt, obv).fail(onError);
 
@@ -35,6 +36,8 @@ class StarterApp {
           const lname = patient.name[0].family.join(' ');
           
           const height = byCodes('8302-2');
+          const systolicbp = byCodes('8480-6');
+          const diastolicbp = byCodes('8462-4');
         
           let p = new Patient();
           p.birthday = dobStr;
@@ -47,6 +50,14 @@ class StarterApp {
             p.height = height[0].valueQuantity.value;
           }
           
+          if(typeof systolicbp[0] !== 'undefined'){
+            p.systolicbp = systolicbp[0].valueQuantity.value;
+          }
+
+          if(typeof diastolicbp[0] !== 'undefined'){
+            p.diastolicbp = diastolicbp[0].valueQuantity.value;
+          }
+
           ret.resolve(p);
         });
       } else { 

@@ -7,6 +7,8 @@ class Patient {
     this.birthday = '';
     this.age = '';
     this.height = '';
+    this.systolicbp = '';
+    this.diastolicbp = '';
   }
 }
 

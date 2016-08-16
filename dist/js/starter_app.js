@@ -129,7 +129,7 @@
 	        if (smart.hasOwnProperty('patient')) {
 	          var patient = smart.patient;
 	          var pt = patient.read();
-	          var obv = smart.patient.api.fetchAll({ type: 'Observation', query: { code: { $or: ['http://loinc.org|8302-2'] } } });
+	          var obv = smart.patient.api.fetchAll({ type: 'Observation', query: { code: { $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4', 'http://loinc.org|8480-6'] } } });
 	
 	          $.when(pt, obv).fail(onError);
 	
@@ -147,6 +147,8 @@
 	            var lname = patient.name[0].family.join(' ');
 	
 	            var height = byCodes('8302-2');
+	            var systolicbp = byCodes('8480-6');
+	            var diastolicbp = byCodes('8462-4');
 	
 	            var p = new _patient2.default();
 	            p.birthday = dobStr;
@@ -157,6 +159,14 @@
 	
 	            if (typeof height[0] !== 'undefined') {
 	              p.height = height[0].valueQuantity.value;
+	            }
+	
+	            if (typeof systolicbp[0] !== 'undefined') {
+	              p.systolicbp = systolicbp[0].valueQuantity.value;
+	            }
+	
+	            if (typeof diastolicbp[0] !== 'undefined') {
+	              p.diastolicbp = diastolicbp[0].valueQuantity.value;
 	            }
 	
 	            ret.resolve(p);
@@ -245,6 +255,8 @@
 	  this.birthday = '';
 	  this.age = '';
 	  this.height = '';
+	  this.systolicbp = '';
+	  this.diastolicbp = '';
 	};
 	
 	exports.default = Patient;

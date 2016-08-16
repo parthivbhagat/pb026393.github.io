@@ -16,6 +16,8 @@ var Patient = function Patient() {
   this.birthday = '';
   this.age = '';
   this.height = '';
+  this.systolicbp = '';
+  this.diastolicbp = '';
 };
 
 exports.default = Patient;

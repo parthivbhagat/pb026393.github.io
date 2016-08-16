@@ -44,26 +44,39 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(1);
+	module.exports = __webpack_require__(2);
 
 
 /***/ },
-/* 1 */
+/* 1 */,
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// This is the entry point for webpack to distribute assets
 	
+	// Require all less files and output them as css for non webpack consumers
+	__webpack_require__(3);
+	
 	// Require all JS and output as a single js bundle.
 	// Note, we are requiring the es5 js.
-	__webpack_require__(2);
+	__webpack_require__(7);
 
 /***/ },
-/* 2 */
+/* 3 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _starter_app = __webpack_require__(3);
+	var _starter_app = __webpack_require__(8);
 	
 	var _starter_app2 = _interopRequireDefault(_starter_app);
 	
@@ -72,7 +85,7 @@
 	window.StarterApp = _starter_app2.default;
 
 /***/ },
-/* 3 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -84,11 +97,11 @@
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /*jshint esversion: 6 */
 	
 	
-	var _util = __webpack_require__(4);
+	var _util = __webpack_require__(9);
 	
 	var _util2 = _interopRequireDefault(_util);
 	
-	var _patient = __webpack_require__(5);
+	var _patient = __webpack_require__(10);
 	
 	var _patient2 = _interopRequireDefault(_patient);
 	
@@ -165,7 +178,7 @@
 	exports.default = StarterApp;
 
 /***/ },
-/* 4 */
+/* 9 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -211,7 +224,7 @@
 	exports.default = Util;
 
 /***/ },
-/* 5 */
+/* 10 */
 /***/ function(module, exports) {
 
 	'use strict';

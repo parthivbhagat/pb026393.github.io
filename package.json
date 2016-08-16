@@ -4,6 +4,8 @@
   "author": "Cerner Corporation, Cloud App Dev Platform",
   "description": "== README",
   "main": "./src/starter_app.js",
+  "style": "dist/css/starter_app.css",
+  "less": "src/less/manifest.less",
   "license": "== LICENSE",
   "homepage": "https://github.com/parthivbhagat/pb026393.github.io",
   "repository": {
@@ -15,8 +17,9 @@
     "build-doc": "jsdoc  --package package.json -d doc ./src/**/*.js",
     "build-es5": "babel src --out-dir dist",
     "build-webpack": "webpack --progress --colors --display-error-details",
-    "build-minify": "npm run build-minify-js",
+    "build-minify": "npm run build-minify-js && npm run build-minify-css",
     "build-minify-js": "uglifyjs dist/js/starter_app.js > dist/js/starter_app.min.js",
+	"build-minify-css": "lessc --clean-css dist/css/starter_app.css dist/css/starter_app.min.css",
     "lint": "npm run lint-js && npm run lint-css",
     "lint-js": "jshint src/*.js --config .jshintrc; exit 0",
     "test": "karma start test/karma.conf.js",
@@ -26,6 +29,9 @@
   "sourceFiles": {
     "js": [
       "./src/js"
+    ],
+    "css": [
+      "./src/css"
     ]
   },
   "mockFiles": [

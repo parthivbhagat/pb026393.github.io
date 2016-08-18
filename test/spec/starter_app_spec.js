@@ -1,5 +1,6 @@
 import StarterApp from 'js/starter_app';
 import Patient from 'js/patient';
+
 describe ('StarterApp', function() {
   
   describe ('FHIR service', function (){

@@ -5,15 +5,21 @@ class Util{
   }
 
   static calculateAge(date) {
-    const d = new Date(date), now = new Date();
-    let years = now.getFullYear() - d.getFullYear();
-    d.setFullYear(d.getFullYear() + years);
-    if (d > now) {
-      years--;
-      d.setFullYear(d.getFullYear() - 1);
+    if (Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())) {
+      const d = new Date(date), now = new Date();
+      let years = now.getFullYear() - d.getFullYear();
+      d.setFullYear(d.getFullYear() + years);
+      if (d > now) {
+        years--;
+        d.setFullYear(d.getFullYear() - 1);
+      }
+      const days = (now.getTime() - d.getTime()) / (3600 * 24 * 1000);
+      return years + days / (this.isLeapYear(now.getFullYear()) ? 366 : 365);
     }
-    const days = (now.getTime() - d.getTime()) / (3600 * 24 * 1000);
-    return years + days / (this.isLeapYear(now.getFullYear()) ? 366 : 365);
+    else {
+      return undefined;
+    }
+    
   }
 }
 

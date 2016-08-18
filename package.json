@@ -19,11 +19,11 @@
     "build-webpack": "webpack --progress --colors --display-error-details",
     "build-minify": "npm run build-minify-js && npm run build-minify-css",
     "build-minify-js": "uglifyjs dist/js/starter_app.js > dist/js/starter_app.min.js",
-	"build-minify-css": "lessc --clean-css dist/css/starter_app.css dist/css/starter_app.min.css",
+	  "build-minify-css": "lessc --clean-css dist/css/starter_app.css dist/css/starter_app.min.css",
     "lint": "npm run lint-js && npm run lint-css",
     "lint-js": "jshint src/*.js --config .jshintrc; exit 0",
-    "test": "karma start test/karma.conf.js",
-    "debug": "karma start test/karma.conf.js --browsers=Chrome --single-run=false --debug"
+    "test": "karma start test/karma.conf.js --single-run --no-auto-watch",
+    "debug": "karma start test/karma.conf.js --browsers=Chrome --no-single-run --auto-watch --debug"
     
   },
   "sourceFiles": {
@@ -34,9 +34,6 @@
       "./src/css"
     ]
   },
-  "mockFiles": [
-    "./test/mock"
-  ],
   "testFiles": [
     "./test/spec"
   ],
@@ -54,11 +51,15 @@
     "jasmine-core": "^2.4.1",
     "jsdoc": "^3.4.0",
     "jshint": "^2.9.1",
-    "karma": "^0.13.22",
+     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.1.1",
+    "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-requirejs": "^0.2.6",
+    "karma-spec-reporter": "0.0.26",
+    "karma-webpack": "^1.7.0",
     "less": "^2.6.1",
     "less-loader": "^2.2.3",
     "less-plugin-clean-css": "^1.5.1",
@@ -67,6 +68,7 @@
     "requirejs": "^2.2.0",
     "style-loader": "^0.13.1",
     "uglify-js": "^2.6.2",
+    "sinon": "^1.15.4",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   }

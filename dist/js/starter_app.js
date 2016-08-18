@@ -191,7 +191,7 @@
 /* 9 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -208,23 +208,27 @@
 	  }
 	
 	  _createClass(Util, null, [{
-	    key: "isLeapYear",
+	    key: 'isLeapYear',
 	    value: function isLeapYear(year) {
 	      return new Date(year, 1, 29).getMonth() === 1;
 	    }
 	  }, {
-	    key: "calculateAge",
+	    key: 'calculateAge',
 	    value: function calculateAge(date) {
-	      var d = new Date(date),
-	          now = new Date();
-	      var years = now.getFullYear() - d.getFullYear();
-	      d.setFullYear(d.getFullYear() + years);
-	      if (d > now) {
-	        years--;
-	        d.setFullYear(d.getFullYear() - 1);
+	      if (Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())) {
+	        var d = new Date(date),
+	            now = new Date();
+	        var years = now.getFullYear() - d.getFullYear();
+	        d.setFullYear(d.getFullYear() + years);
+	        if (d > now) {
+	          years--;
+	          d.setFullYear(d.getFullYear() - 1);
+	        }
+	        var days = (now.getTime() - d.getTime()) / (3600 * 24 * 1000);
+	        return years + days / (this.isLeapYear(now.getFullYear()) ? 366 : 365);
+	      } else {
+	        return undefined;
 	      }
-	      var days = (now.getTime() - d.getTime()) / (3600 * 24 * 1000);
-	      return years + days / (this.isLeapYear(now.getFullYear()) ? 366 : 365);
 	    }
 	  }]);
 	

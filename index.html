@@ -8,25 +8,59 @@
     <link rel='stylesheet' type='text/css' href='./dist/css/starter_app.min.css'>
   </head>
   <body style='margin: none;'>
-    <h2>SMART STARTER APP ( PATIENT DEMOGRAPHICS )</h2>
+    <h2>SMART STARTER APP</h2>
     <div id='errors'>
     </div>
     <div id='holder' style='display:none;'>
+
+      <h2>Patient Resource</h2>
       <table>
-        <thead id='header'>         
-        </thead>
-        <tbody>
-          <tr>
-            <td id='fname'></td>
-            <td id='lname'></td>
-            <td id='gender'></td>
-            <td id='birthday'></td>
-            <td id='age'></td>
-            <td id='height'></td>
-            <td id='systolicbp'></td>
-            <td id='diastolicbp'></td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>First Name:</th>
+          <td id='fname'></td>            
+        </tr>
+        <tr>
+          <th>Last Name:</th>
+          <td id='lname'></td>
+        </tr>
+        <tr>
+          <th>Gender:</th>
+          <td id='gender'></td>          
+        </tr>
+        <tr>
+          <th>Date of Birth:</th>
+          <td id='birthday'></td>            
+        </tr>
+        <tr>
+          <th>Age:</th>
+          <td id='age'></td>            
+        </tr>       
+      </table>
+
+
+      <h2>Observation Resource</h2>
+      <table>
+        <tr>
+          <th>Height:</th>          
+          <td id='height'></td>            
+        </tr>
+        <tr>
+          <th>Systolic Blood Pressure:</th>
+          <td id='systolicbp'></td>
+            
+        </tr>
+        <tr>
+          <th>Diastolic Blood Pressure:</th>
+          <td id='diastolicbp'></td>
+        </tr>
+        <tr>
+          <th>LDL:</th>
+          <td id='ldl'></td>
+        </tr>
+        <tr>
+          <th>HDL:</th>
+          <td id='hdl'></td>
+        </tr>
       </table>
     </div>   
   </body>

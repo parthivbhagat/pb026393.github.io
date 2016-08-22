@@ -47,7 +47,7 @@ module.exports = function(config) {
       'test/**/*_spec.js': ['webpack'],
       'src/**/*.js': ['webpack', 'coverage']
     },
-    reporters: [ 'spec', 'coverage' ],
+    reporters: ['spec', 'coverage'],
     coverageReporter: {
       dir: 'target/reports/coverage',
       reporters: [

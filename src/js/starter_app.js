@@ -16,9 +16,17 @@ class StarterApp {
       if (smart.hasOwnProperty('patient')) { 
         const patient = smart.patient;
         const pt = patient.read();
-        const obv = smart.patient.api.fetchAll({type: 'Observation', query: {code: {$or: ['http://loinc.org|8302-2',
-          'http://loinc.org|8462-4', 'http://loinc.org|8480-6']}}});
-
+        const obv = smart.patient.api.fetchAll({
+                      type: 'Observation', 
+                      query: {
+                        code: {
+                          $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
+                                'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
+                                'http://loinc.org|2089-1']
+                              }
+                             }
+                    });
+        
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
@@ -37,7 +45,9 @@ class StarterApp {
           const height = byCodes('8302-2');
           const systolicbp = byCodes('8480-6');
           const diastolicbp = byCodes('8462-4');
-        
+          const hdl = byCodes('2085-9');
+          const ldl = byCodes('2089-1');
+
           let p = new Patient();          
           p.birthday = dobStr;
           p.gender = gender;
@@ -56,7 +66,14 @@ class StarterApp {
           if(typeof diastolicbp[0] !== 'undefined') {
             p.obv.diastolicbp = diastolicbp[0].valueQuantity.value;
           }
+          
+          if(typeof hdl[0] !== 'undefined') {
+            p.obv.hdl = hdl[0].valueQuantity.value;
+          }
 
+          if(typeof ldl[0] !== 'undefined') {
+            p.obv.ldl = ldl[0].valueQuantity.value;
+          }
           ret.resolve(p);
         });
       } else { 

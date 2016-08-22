@@ -129,7 +129,14 @@
 	        if (smart.hasOwnProperty('patient')) {
 	          var patient = smart.patient;
 	          var pt = patient.read();
-	          var obv = smart.patient.api.fetchAll({ type: 'Observation', query: { code: { $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4', 'http://loinc.org|8480-6'] } } });
+	          var obv = smart.patient.api.fetchAll({
+	            type: 'Observation',
+	            query: {
+	              code: {
+	                $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4', 'http://loinc.org|8480-6', 'http://loinc.org|2085-9', 'http://loinc.org|2089-1']
+	              }
+	            }
+	          });
 	
 	          $.when(pt, obv).fail(onError);
 	
@@ -149,6 +156,8 @@
 	            var height = byCodes('8302-2');
 	            var systolicbp = byCodes('8480-6');
 	            var diastolicbp = byCodes('8462-4');
+	            var hdl = byCodes('2085-9');
+	            var ldl = byCodes('2089-1');
 	
 	            var p = new _patient2.default();
 	            p.birthday = dobStr;
@@ -169,6 +178,13 @@
 	              p.obv.diastolicbp = diastolicbp[0].valueQuantity.value;
 	            }
 	
+	            if (typeof hdl[0] !== 'undefined') {
+	              p.obv.hdl = hdl[0].valueQuantity.value;
+	            }
+	
+	            if (typeof ldl[0] !== 'undefined') {
+	              p.obv.ldl = ldl[0].valueQuantity.value;
+	            }
 	            ret.resolve(p);
 	          });
 	        } else {
@@ -288,6 +304,8 @@
 	  this.height = '';
 	  this.systolicbp = '';
 	  this.diastolicbp = '';
+	  this.ldl = '';
+	  this.hdl = '';
 	};
 	
 	exports.default = Observations;

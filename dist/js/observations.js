@@ -13,6 +13,8 @@ var Observations = function Observations() {
   this.height = '';
   this.systolicbp = '';
   this.diastolicbp = '';
+  this.ldl = '';
+  this.hdl = '';
 };
 
 exports.default = Observations;

@@ -56,23 +56,23 @@ class StarterApp {
           p.age = parseInt(Util.calculateAge(dob));
 
           if(typeof height[0] !== 'undefined') {
-            p.obv.height = height[0].valueQuantity.value;
+            p.obv.height = height[0].valueQuantity.value + ' ' + height[0].valueQuantity.unit;
           }
           
           if(typeof systolicbp[0] !== 'undefined') {
-            p.obv.systolicbp = systolicbp[0].valueQuantity.value;
+            p.obv.systolicbp = systolicbp[0].valueQuantity.value + ' ' + systolicbp[0].valueQuantity.unit;
           }
 
           if(typeof diastolicbp[0] !== 'undefined') {
-            p.obv.diastolicbp = diastolicbp[0].valueQuantity.value;
+            p.obv.diastolicbp = diastolicbp[0].valueQuantity.value + ' ' + diastolicbp[0].valueQuantity.unit;
           }
           
           if(typeof hdl[0] !== 'undefined') {
-            p.obv.hdl = hdl[0].valueQuantity.value;
+            p.obv.hdl = hdl[0].valueQuantity.value + ' ' + hdl[0].valueQuantity.unit;
           }
 
           if(typeof ldl[0] !== 'undefined') {
-            p.obv.ldl = ldl[0].valueQuantity.value;
+            p.obv.ldl = ldl[0].valueQuantity.value + ' ' + ldl[0].valueQuantity.unit;
           }
           ret.resolve(p);
         });

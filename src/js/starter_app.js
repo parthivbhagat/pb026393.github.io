@@ -1,6 +1,8 @@
 /*jshint esversion: 6 */
 import Util from './util';
 import Patient from './patient';
+import FHIRClient from '../../node_modules/fhirclient/fhir-client.js';
+import $ from '../../node_modules/jquery/src/jquery';
 
 class StarterApp {
   static extractData() {
@@ -81,7 +83,7 @@ class StarterApp {
       }
       
     }
-
+    
     FHIR.oauth2.ready(onReady, onError);
 
     return ret.promise();

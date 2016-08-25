@@ -12,6 +12,10 @@
     "type": "git",
     "url": "git@github.com:parthivbhagat/pb026393.github.io.git"
   },
+  "dependencies":{
+    "fhirclient": "^0.1.9",
+    "jquery": "^2.1.4"
+  },
   "scripts": {
     "build": "npm run build-es5 && npm run build-webpack && npm run build-minify",
     "build-doc": "jsdoc  --package package.json -d doc ./src/**/*.js",
@@ -37,6 +41,7 @@
   "testFiles": [
     "./test/spec"
   ],
+  
   "devDependencies": {
     "babel-cli": "^6.9.0",
     "babel-eslint": "^6.0.4",
@@ -51,7 +56,7 @@
     "jasmine-core": "^2.4.1",
     "jsdoc": "^3.4.0",
     "jshint": "^2.9.1",
-     "karma": "^0.13.22",
+    "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
     "karma-coverage": "^1.1.1",
     "karma-firefox-launcher": "^1.0.0",

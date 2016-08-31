@@ -28,10 +28,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/mock/**/*_mock.js',
-      'node_modules/xfc/dist/xfc.js',
-      'test/**/*_spec.js',
-      'lib/**.js'
+      'test/**/*_spec.js'
     ],
     plugins: [
       webpack, 

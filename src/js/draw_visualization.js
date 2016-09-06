@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 function drawVisualization(p) { 
-  $('.holder').show();
+  $('#holder').show();
   $('#fname').html(p.fname);
   $('#lname').html(p.lname);
   $('#gender').html(p.gender);

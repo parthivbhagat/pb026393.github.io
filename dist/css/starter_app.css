@@ -3,5 +3,11 @@ td {
   padding: 5px;
   text-align: left;
 }
+body {
+  margin: 0;
+}
+#header {
+  display: none;
+}
 
 /*# sourceMappingURL=starter_app.css.map*/

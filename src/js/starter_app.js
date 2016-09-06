@@ -40,10 +40,14 @@ class StarterApp {
           const year = dob.getFullYear();
 
           const dobStr = monthIndex + '/' + day + '/' + year;
-          
-          const fname = patient.name[0].given.join(' ');
-          const lname = patient.name[0].family.join(' ');
-          
+          let fname = '';
+          let lname = '';
+
+          if(typeof patient.name[0] !== 'undefined') {
+            fname = patient.name[0].given.join(' ');
+            lname = patient.name[0].family.join(' ');
+          }
+
           const height = byCodes('8302-2');
           const systolicbp = byCodes('8480-6');
           const diastolicbp = byCodes('8462-4');

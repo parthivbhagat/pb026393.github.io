@@ -1,7 +1,7 @@
 {
   "name": "smart-starter-app",
   "version": "1.0.0",
-  "author": "Cerner Corporation, Cloud App Dev Platform",
+  "author": "Cerner Corporation",
   "description": "== README",
   "main": "./src/starter_app.js",
   "style": "dist/css/starter_app.css",
@@ -17,7 +17,7 @@
     "jquery": "^2.1.4"
   },
   "scripts": {
-    "build": "npm run build-es5 && npm run build-webpack && npm run build-minify",
+    "build": "npm run build-es5 && npm run build-webpack && npm run build-minify && npm run lint",
     "build-doc": "jsdoc  --package package.json -d doc ./src/**/*.js",
     "build-es5": "babel src --out-dir dist",
     "build-webpack": "webpack --progress --colors --display-error-details",
@@ -25,7 +25,8 @@
     "build-minify-js": "uglifyjs dist/js/starter_app.js > dist/js/starter_app.min.js",
     "build-minify-css": "lessc --clean-css dist/css/starter_app.css dist/css/starter_app.min.css",
     "lint": "npm run lint-js && npm run lint-css",
-    "lint-js": "jshint src/*.js --config .jshintrc; exit 0",
+    "lint-css": "csslint dist/css/starter_app.css",
+    "lint-js": "jshint src/js/starter_app.js --config .jshintrc",
     "test": "karma start test/karma.conf.js --single-run --no-auto-watch",
     "debug": "karma start test/karma.conf.js --browsers=Chrome --no-single-run --auto-watch --debug"
     

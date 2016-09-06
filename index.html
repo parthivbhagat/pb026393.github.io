@@ -7,11 +7,11 @@
   
     <link rel='stylesheet' type='text/css' href='./dist/css/starter_app.min.css'>
   </head>
-  <body style='margin: none;'>
+  <body>
     <h2>SMART STARTER APP</h2>
     <div id='errors'>
     </div>
-    <div id='holder' style='display:none;'>
+    <div id='holder' >
 
       <h2>Patient Resource</h2>
       <table>
@@ -68,10 +68,12 @@
   <script src='./dist/js/draw_visualization.js'></script>
   <script>
     StarterApp.extractData().then(
+	  //Display Patient Demographics and Observations if extractData was success
       function(p) {          
         drawVisualization(p);
       }, 
-
+      
+	  //Display 'Failed to call FHIR Service' if extractData failed
       function() {
         $('#errors').html('<p> Failed to call FHIR Service </p>');
       }

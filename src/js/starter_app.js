@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 import Util from './util';
 import Patient from './patient';
-import FHIRClient from '../../node_modules/fhirclient/fhir-client.js';
+//import FHIRClient from '../../node_modules/fhirclient/fhir-client.js';
 import $ from '../../node_modules/jquery/src/jquery';
 
 class StarterApp {
@@ -66,11 +66,13 @@ class StarterApp {
           }
           
           if(typeof systolicbp[0] !== 'undefined') {
-            p.obv.systolicbp = systolicbp[0].valueQuantity.value + ' ' + systolicbp[0].valueQuantity.unit;
+            p.obv.systolicbp = systolicbp[0].valueQuantity.value + 
+                                  ' ' + systolicbp[0].valueQuantity.unit;
           }
 
           if(typeof diastolicbp[0] !== 'undefined') {
-            p.obv.diastolicbp = diastolicbp[0].valueQuantity.value + ' ' + diastolicbp[0].valueQuantity.unit;
+            p.obv.diastolicbp = diastolicbp[0].valueQuantity.value + 
+                                  ' ' + diastolicbp[0].valueQuantity.unit;
           }
           
           if(typeof hdl[0] !== 'undefined') {

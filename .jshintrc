@@ -58,5 +58,10 @@
    */
 
   // Suppress warnings about == null comparisons.
-  "eqnull": true
+  "eqnull": true,
+  
+  "globals" : {
+    "FHIR": true,
+    "FHIRClient": true
+  }
 }

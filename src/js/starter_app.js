@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 import Util from './util';
 import Patient from './patient';
-//import FHIRClient from '../../node_modules/fhirclient/fhir-client.js';
+import FHIR from '../../node_modules/fhirclient/fhir-client.js';
 import $ from '../../node_modules/jquery/src/jquery';
 
 class StarterApp {

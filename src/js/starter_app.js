@@ -1,14 +1,5 @@
-/*jshint esversion: 6 */
-import Util from './util';
-import Patient from './patient';
-// jshint unused:false 
-import FHIRClient from '../../node_modules/fhirclient/fhir-client.js';
-import $ from '../../node_modules/jquery/src/jquery';
-
-class StarterApp {
-  static extractData() {
-   
-    const ret = $.Deferred();     
+(function(window){
+  window.extractData = function() {
     
     function onError() {
       console.log('Loading error', arguments);
@@ -17,9 +8,9 @@ class StarterApp {
 
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) { 
-        const patient = smart.patient;
-        const pt = patient.read();
-        const obv = smart.patient.api.fetchAll({
+        var patient = smart.patient;
+        var pt = patient.read();
+        var obv = smart.patient.api.fetchAll({
                       type: 'Observation', 
                       query: {
                         code: {
@@ -33,34 +24,34 @@ class StarterApp {
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
-          const byCodes = smart.byCodes(obv, 'code');
-          const gender = patient.gender;
-          const dob = new Date(patient.birthDate);     
-          const day = dob.getDate(); 
-          const monthIndex = dob.getMonth() + 1;
-          const year = dob.getFullYear();
+          var byCodes = smart.byCodes(obv, 'code');
+          var gender = patient.gender;
+          var dob = new Date(patient.birthDate);     
+          var day = dob.getDate(); 
+          var monthIndex = dob.getMonth() + 1;
+          var year = dob.getFullYear();
 
-          const dobStr = monthIndex + '/' + day + '/' + year;
-          let fname = '';
-          let lname = '';
+          var dobStr = monthIndex + '/' + day + '/' + year;
+          var fname = '';
+          var lname = '';
 
           if(typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
             lname = patient.name[0].family.join(' ');
           }
 
-          const height = byCodes('8302-2');
-          const systolicbp = byCodes('8480-6');
-          const diastolicbp = byCodes('8462-4');
-          const hdl = byCodes('2085-9');
-          const ldl = byCodes('2089-1');
+          var height = byCodes('8302-2');
+          var systolicbp = byCodes('8480-6');
+          var diastolicbp = byCodes('8462-4');
+          var hdl = byCodes('2085-9');
+          var ldl = byCodes('2089-1');
 
-          let p = new Patient();          
+          var p = defaultPatient();          
           p.birthday = dobStr;
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
-          p.age = parseInt(Util.calculateAge(dob));
+          p.age = parseInt(calculateAge(dob));
 
           if(typeof height[0] !== 'undefined') {
             p.obv.height = height[0].valueQuantity.value + ' ' + height[0].valueQuantity.unit;
@@ -94,7 +85,59 @@ class StarterApp {
     FHIR.oauth2.ready(onReady, onError);
 
     return ret.promise();
-  }
-}
 
-export default StarterApp;
+  };
+
+  function defaultPatient(){
+    return {
+      fname: {value: ''},
+      lname: {value: ''},
+      gender: {value: ''},
+      birthday: {value: ''},
+      age: {value: ''},
+      height: {value: ''},
+      systolicbp: {value: ''},
+      diastolicbp: {value: ''},
+      ldl: {value: ''},
+      hdl: {value: ''},
+    };
+  }
+
+  function isLeapYear(year) {
+    return new Date(year, 1, 29).getMonth() === 1;
+  }
+
+  function calculateAge(date) {
+    if (Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())) {
+      var d = new Date(date), now = new Date();
+      var years = now.getFullYear() - d.getFullYear();
+      d.setFullYear(d.getFullYear() + years);
+      if (d > now) {
+        years--;
+        d.setFullYear(d.getFullYear() - 1);
+      }
+      var days = (now.getTime() - d.getTime()) / (3600 * 24 * 1000);
+      return years + days / (isLeapYear(now.getFullYear()) ? 366 : 365);
+    }
+    else {
+      return undefined;
+    }
+    
+  }
+
+  function drawVisualization(p) { 
+    $('#holder').show();
+    $('#loading').hide();
+    $('#fname').html(p.fname);
+    $('#lname').html(p.lname);
+    $('#gender').html(p.gender);
+    $('#birthday').html(p.birthday);  
+    $('#age').html(p.age);
+    $('#height').html(p.obv.height);
+    $('#systolicbp').html(p.obv.systolicbp);
+    $('#diastolicbp').html(p.obv.diastolicbp);
+    $('#ldl').html(p.obv.ldl);
+    $('#hdl').html(p.obv.hdl);
+  }
+
+})(window);

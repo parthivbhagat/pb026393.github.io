@@ -134,11 +134,11 @@
     $('#gender').html(p.gender);
     $('#birthday').html(p.birthday);  
     $('#age').html(p.age);
-    $('#height').html(p.obv.height);
-    $('#systolicbp').html(p.obv.systolicbp);
-    $('#diastolicbp').html(p.obv.diastolicbp);
-    $('#ldl').html(p.obv.ldl);
-    $('#hdl').html(p.obv.hdl);
+    $('#height').html(p.height);
+    $('#systolicbp').html(p.systolicbp);
+    $('#diastolicbp').html(p.diastolicbp);
+    $('#ldl').html(p.ldl);
+    $('#hdl').html(p.hdl);
   }
 
 })(window);

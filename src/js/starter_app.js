@@ -54,26 +54,26 @@
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
 
-          if(typeof height[0] !== 'undefined') {
-            p.obv.height = height[0].valueQuantity.value + ' ' + height[0].valueQuantity.unit;
+          if(typeof height[0] != 'undefined') {
+            p.height = height[0].valueQuantity.value + ' ' + height[0].valueQuantity.unit;
           }
           
-          if(typeof systolicbp[0] !== 'undefined') {
-            p.obv.systolicbp = systolicbp[0].valueQuantity.value + 
+          if(typeof systolicbp[0] != 'undefined') {
+            p.systolicbp = systolicbp[0].valueQuantity.value + 
                                   ' ' + systolicbp[0].valueQuantity.unit;
           }
 
-          if(typeof diastolicbp[0] !== 'undefined') {
-            p.obv.diastolicbp = diastolicbp[0].valueQuantity.value + 
+          if(typeof diastolicbp[0] != 'undefined') {
+            p.diastolicbp = diastolicbp[0].valueQuantity.value + 
                                   ' ' + diastolicbp[0].valueQuantity.unit;
           }
           
-          if(typeof hdl[0] !== 'undefined') {
-            p.obv.hdl = hdl[0].valueQuantity.value + ' ' + hdl[0].valueQuantity.unit;
+          if(typeof hdl[0] != 'undefined') {
+            p.hdl = hdl[0].valueQuantity.value + ' ' + hdl[0].valueQuantity.unit;
           }
 
-          if(typeof ldl[0] !== 'undefined') {
-            p.obv.ldl = ldl[0].valueQuantity.value + ' ' + ldl[0].valueQuantity.unit;
+          if(typeof ldl[0] != 'undefined') {
+            p.ldl = ldl[0].valueQuantity.value + ' ' + ldl[0].valueQuantity.unit;
           }
           ret.resolve(p);
         });

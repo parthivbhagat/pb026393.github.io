@@ -1,7 +1,7 @@
 (function(window){
   window.extractData = function() {
     var ret = $.Deferred(); 
-	
+  
     function onError() {
       console.log('Loading error', arguments);
       ret.reject();
@@ -54,37 +54,35 @@
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
 
-          if(typeof height[0] != 'undefined') {
+          if(typeof height[0] != 'undefined' && typeof height[0].valueQuantity.value != 'undefined' && typeof height[0].valueQuantity.unit != 'undefined') {
             p.height = height[0].valueQuantity.value + ' ' + height[0].valueQuantity.unit;
           }
           
-          if(typeof systolicbp[0] != 'undefined') {
+          if(typeof systolicbp[0] != 'undefined' && typeof systolicbp[0].valueQuantity.value != 'undefined'&& typeof systolicbp[0].valueQuantity.unit != 'undefined')  {
             p.systolicbp = systolicbp[0].valueQuantity.value + 
                                   ' ' + systolicbp[0].valueQuantity.unit;
           }
 
-          if(typeof diastolicbp[0] != 'undefined') {
+          if(typeof diastolicbp[0] != 'undefined' && typeof diastolicbp[0].valueQuantity.value != 'undefined' && typeof diastolicbp[0].valueQuantity.unit != 'undefined') {
             p.diastolicbp = diastolicbp[0].valueQuantity.value + 
                                   ' ' + diastolicbp[0].valueQuantity.unit;
           }
           
-          if(typeof hdl[0] != 'undefined') {
+          if(typeof hdl[0] != 'undefined' && typeof hdl[0].valueQuantity.value != 'undefined' && typeof hdl[0].valueQuantity.unit != 'undefined') {
             p.hdl = hdl[0].valueQuantity.value + ' ' + hdl[0].valueQuantity.unit;
           }
 
-          if(typeof ldl[0] != 'undefined') {
+          if(typeof ldl[0] != 'undefined' && typeof ldl[0].valueQuantity.value != 'undefined' && typeof ldl[0].valueQuantity.unit != 'undefined') {
             p.ldl = ldl[0].valueQuantity.value + ' ' + ldl[0].valueQuantity.unit;
           }
           ret.resolve(p);
         });
       } else { 
         onError();
-      }
-      
+      }      
     }
     
     FHIR.oauth2.ready(onReady, onError);
-
     return ret.promise();
 
   };
@@ -139,6 +137,6 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
-  }
+  };
 
 })(window);

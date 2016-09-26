@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>  
   <head>
-    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
-    <title>SMART STARTER APP</title>    
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />    
+    <title>SMART Starter App</title>    
   
     <link rel='stylesheet' type='text/css' href='./src/css/starter_app.css'>
   </head>
   <body>
-    <h2>SMART STARTER APP</h2>
+    <h2>SMART on FHIR Starter App</h2>
     <div id='errors'>
     </div>
     <div id="loading">Loading...</div>
@@ -37,8 +37,6 @@
           <td id='age'></td>            
         </tr>       
       </table>
-
-
       <h2>Observation Resource</h2>
       <table>
         <tr>
@@ -63,22 +61,22 @@
           <td id='hdl'></td>
         </tr>
       </table>
-    </div>   
+    </div>
+    <script src='./src/js/starter_app.js'></script>
+    <script src='./lib/fhir-client.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      extractData().then(
+        //Display Patient Demographics and Observations if extractData was success
+        function(p) {          
+          drawVisualization(p);
+        }, 
+        
+        //Display 'Failed to call FHIR Service' if extractData failed
+        function() {
+          $('#errors').html('<p> Failed to call FHIR Service </p>');
+        }
+      );
+    </script>
   </body>
-  <script src='./src/js/starter_app.js'></script>
-  <script src='./lib/fhir-client.min.js'></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script>
-    extractData().then(
-	  //Display Patient Demographics and Observations if extractData was success
-      function(p) {          
-        drawVisualization(p);
-      }, 
-      
-	  //Display 'Failed to call FHIR Service' if extractData failed
-      function() {
-        $('#errors').html('<p> Failed to call FHIR Service </p>');
-      }
-    );
-  </script>
 </html>

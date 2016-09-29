@@ -48,7 +48,7 @@
           var ldl = byCodes('2089-1');
 
           var p = defaultPatient();          
-          p.birthday = dobStr;
+          p.birthdate = dobStr;
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
@@ -92,7 +92,7 @@
       fname: {value: ''},
       lname: {value: ''},
       gender: {value: ''},
-      birthday: {value: ''},
+      birthdate: {value: ''},
       age: {value: ''},
       height: {value: ''},
       systolicbp: {value: ''},
@@ -130,7 +130,7 @@
     $('#fname').html(p.fname);
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
-    $('#birthday').html(p.birthday);  
+    $('#birthdate').html(p.birthdate);  
     $('#age').html(p.age);
     $('#height').html(p.height);
     $('#systolicbp').html(p.systolicbp);

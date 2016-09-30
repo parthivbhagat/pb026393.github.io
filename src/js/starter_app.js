@@ -113,6 +113,7 @@
         formattedBPObservations.push(observation);
       }
     });
+    alert(typeOfPressure);
     alert(BP);
     alert(formattedBPObservations);
     if (typeof formattedBPObservations.valueQuantity.unit != 'undefined') {

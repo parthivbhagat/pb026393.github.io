@@ -110,13 +110,14 @@
         });
       });
       if (BP) {
+        alert("here"); 
         observation.valueQuantity = BP.valueQuantity;
         formattedBPObservations.push(observation);
       }
     });
     alert(typeOfPressure);
     alert(formattedBPObservations);
-    alert(BP);    
+       
     if (typeof formattedBPObservations.valueQuantity.unit != 'undefined') {
       return parseFloat(formattedBPObservations.valueQuantity.value);
     }

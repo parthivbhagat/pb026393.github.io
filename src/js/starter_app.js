@@ -106,11 +106,9 @@
       var BP = observation.component.find(function(component){
         return component.code.coding.find(function(coding) {
           return coding.code == typeOfPressure;
-          alert(coding.code === typeOfPressure);
         });
       });
-      if (BP) {
-        alert("here"); 
+      if (BP) { 
         observation.valueQuantity = BP.valueQuantity;
         formattedBPObservations.push(observation);
       }
@@ -118,7 +116,7 @@
     alert(typeOfPressure);
     alert(formattedBPObservations);
        
-    if (typeof formattedBPObservations.valueQuantity.unit != 'undefined') {
+    if (typeof formattedBPObservations.valueQuantity.value != 'undefined') {
       return parseFloat(formattedBPObservations.valueQuantity.value);
     }
     else {

@@ -114,7 +114,7 @@
       }
     });
     alert(typeOfPressure);
-    alert(formattedBPObservations);
+    alert(formattedBPObservations.valueQuantity);
        
     if (typeof formattedBPObservations.valueQuantity.value != 'undefined') {
       return parseFloat(formattedBPObservations.valueQuantity.value);

@@ -17,7 +17,7 @@
                         code: {
                           $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
                                 'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
-                                'http://loinc.org|2089-1']
+                                'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
                               }
                              }
                     });
@@ -42,8 +42,8 @@
           }
 
           var height = byCodes('8302-2');
-          var systolicbp = byCodes('8480-6');
-          var diastolicbp = byCodes('8462-4');
+          var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
+          var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
 
@@ -58,14 +58,12 @@
             p.height = height[0].valueQuantity.value + ' ' + height[0].valueQuantity.unit;
           }
           
-          if(typeof systolicbp[0] != 'undefined' && typeof systolicbp[0].valueQuantity.value != 'undefined'&& typeof systolicbp[0].valueQuantity.unit != 'undefined')  {
-            p.systolicbp = systolicbp[0].valueQuantity.value + 
-                                  ' ' + systolicbp[0].valueQuantity.unit;
+          if(typeof systolicbp != 'undefined')  {
+            p.systolicbp = systolicbp;
           }
 
-          if(typeof diastolicbp[0] != 'undefined' && typeof diastolicbp[0].valueQuantity.value != 'undefined' && typeof diastolicbp[0].valueQuantity.unit != 'undefined') {
-            p.diastolicbp = diastolicbp[0].valueQuantity.value + 
-                                  ' ' + diastolicbp[0].valueQuantity.unit;
+          if(typeof diastolicbp != 'undefined') {
+            p.diastolicbp = diastolicbp;
           }
           
           if(typeof hdl[0] != 'undefined' && typeof hdl[0].valueQuantity.value != 'undefined' && typeof hdl[0].valueQuantity.unit != 'undefined') {
@@ -100,6 +98,28 @@
       ldl: {value: ''},
       hdl: {value: ''},
     };
+  }
+
+  function getBloodPressureValue(BPObservations, typeOfPressure){
+    var formattedBPObservations = [];
+    BPObservations.forEach(function(observation){
+      var BP = observation.component.find(function(component){
+        return component.code.coding.find(function(coding) {
+          return coding.code === typeOfPressure;
+        });
+      });
+      if (BP) {
+        observation.valueQuantity = BP.valueQuantity;
+        formattedBPObservations.push(observation);
+      }
+    });
+    
+    if (typeof formattedBPObservations.valueQuantity.unit != 'undefined') {
+      return parseFloat(formattedBPObservations.valueQuantity.value);
+    }
+    else {
+      return undefined;
+    }
   }
 
   function isLeapYear(year) {

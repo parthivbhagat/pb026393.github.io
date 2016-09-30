@@ -117,8 +117,8 @@
     console.log(typeOfPressure);
     console.log(formattedBPObservations);
        
-    if (typeof formattedBPObservations[0].valueQuantity.value != 'undefined') {
-      return parseFloat(formattedBPObservations[0].valueQuantity.value);
+    if (typeof formattedBPObservations[0].valueQuantity.value != 'undefined' && formattedBPObservations[0].valueQuantity.unit != 'undefined') {
+      return formattedBPObservations[0].valueQuantity.value + ' ' + formattedBPObservations[0].valueQuantity.unit ;
     }
     else {
       return undefined;

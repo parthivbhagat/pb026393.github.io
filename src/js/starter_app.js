@@ -6,8 +6,21 @@
       console.log('Loading error', arguments);
       ret.reject();
     }     
-
+    function defaultOnFail(promise, defaultValue) {
+      var deferred = $.Deferred();
+      $.when(promise).then(
+          function (data) {
+            deferred.resolve(data);
+          },
+          function () {
+            deferred.resolve(defaultValue);
+          }
+      );
+      return deferred.promise();
+    };
+	
     function onReady(smart)  {
+      
       if (smart.hasOwnProperty('patient')) { 
         var patient = smart.patient;
         var pt = patient.read();

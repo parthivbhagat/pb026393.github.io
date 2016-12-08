@@ -19,7 +19,7 @@
       return deferred.promise();
     };
 
-    function translate(query){
+    function translate(patientfield, query){
 				//alert("er")
 				var targeturl = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCqAgf0Umm5IwbAUCDjxwjscmLMRaS2O08&source=en&target=hi&q=" + query;
 				var retvalue = "";
@@ -31,7 +31,7 @@
 					data: "", //ur data to be sent to server
 					contentType: "application/json",  
 					dataType: "json",			
-					
+					async: false,
 					success: function (data) {
 					  //alert(JSON.stringify(data))
 					  var obj = $.parseJSON(JSON.stringify(data));
@@ -54,7 +54,7 @@
 					  //table += '<table><thead><th>Translated Text</th></thead><tbody>';
 					  $.each(obj.data.translations, function(key , value) {
                             console.log("inside:" + value.translatedText);
-							retvalue = value.translatedText;
+							patientfield.fname = value.translatedText;
 							console.log("inside: retvalue: " + value.translatedText);
 						});
 						
@@ -99,8 +99,7 @@
 		  console.log(patient);
 		  
           var byCodes = smart.byCodes(obv, 'code');
-          var gender =  translate(patient.gender);
-          console.log(gender);
+          var gender =  patient.gender;
           var dob = new Date(patient.birthDate);     
           var day = dob.getDate(); 
           var monthIndex = dob.getMonth() + 1;
@@ -128,7 +127,7 @@
           var p = defaultPatient();          
           p.birthdate = dobStr;
           p.gender = gender;
-          p.fname = translate(fname);
+          p.fname = translate(p, fname);
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
 

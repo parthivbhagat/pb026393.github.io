@@ -148,7 +148,7 @@
       ldl: {value: ''},
       hdl: {value: ''},
 	  hr: {value: ''},
-	  spo2: {value; ''},
+	  spo2: {value: ''},
 	  familyHistory: {
           father : {
             height: null,

@@ -21,10 +21,12 @@
                               }
                              }
                     });
+		
+		var familyHistoryFetch = defaultOnFail(smart.patient.api.fetchAll({type: "FamilyMemberHistory"}), []);
         
         $.when(pt, obv).fail(onError);
 
-        $.when(pt, obv).done(function(patient, obv) {
+        $.when(pt, obv, familyHistoryFetch).done(function(patient, obv, familyHistories) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var dob = new Date(patient.birthDate);     
@@ -73,6 +75,28 @@
           if(typeof ldl[0] != 'undefined' && typeof ldl[0].valueQuantity.value != 'undefined' && typeof ldl[0].valueQuantity.unit != 'undefined') {
             p.ldl = ldl[0].valueQuantity.value + ' ' + ldl[0].valueQuantity.unit;
           }
+		  
+		  $.each(familyHistories, function(index, fh){
+			if (fh.resourceType === "FamilyMemberHistory") {
+				  var code = fh.relationship.coding[0].code;
+				  $.each(fh.extension || [], function(index, ext){
+					if (ext.url === "http://fhir-registry.smarthealthit.org/StructureDefinition/family-history#height") {
+					  var ht = units.cm(ext.valueQuantity);
+					  var r = null;
+					  if (code === 'FTH') {
+						r = p.familyHistory.father;
+					  } else if (code === 'MTH') {
+						r = p.familyHistory.mother;
+					  }
+					  if (r) {
+						r.height = ht;
+						r.isBio = true;
+					  }
+					}
+				  });
+			}
+		  });
+	      console.log(p);
           ret.resolve(p);
         });
       } else { 
@@ -97,7 +121,16 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
-    };
+	  familyHistory: {
+          father : {
+            height: null,
+            isBio : false
+          },
+          mother : {
+            height: null,
+            isBio : false
+      }
+    }
   }
 
   function getBloodPressureValue(BPObservations, typeOfPressure){

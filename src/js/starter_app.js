@@ -36,7 +36,7 @@
                              }
                     });
 		
-		var familyHistoryFetch = defaultOnFail(smart.patient.api.fetchAll({type: "FamilyMemberHistory"}), []);
+		//var familyHistoryFetch = defaultOnFail(smart.patient.api.fetchAll({type: "FamilyMemberHistory"}), []);
         
         $.when(pt, obv).fail(onError);
 
@@ -90,7 +90,7 @@
             p.ldl = ldl[0].valueQuantity.value + ' ' + ldl[0].valueQuantity.unit;
           }
 		  
-		  $.each(familyHistories, function(index, fh){
+		 /* $.each(familyHistories, function(index, fh){
 			if (fh.resourceType === "FamilyMemberHistory") {
 				  var code = fh.relationship.coding[0].code;
 				  $.each(fh.extension || [], function(index, ext){
@@ -109,7 +109,7 @@
 					}
 				  });
 			}
-		  });
+		  });*/
 	      console.log(p);
           ret.resolve(p);
         });

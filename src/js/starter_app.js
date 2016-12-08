@@ -22,7 +22,7 @@
     function translate(query){
 				//alert("er")
 				var targeturl = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCqAgf0Umm5IwbAUCDjxwjscmLMRaS2O08&source=en&target=hi&q=" + query;
-				
+				var retvalue = "";
 				console.log(targeturl);
 				
 				$.ajax({
@@ -54,7 +54,7 @@
 					  //table += '<table><thead><th>Translated Text</th></thead><tbody>';
 					  $.each(obj.data.translations, function(key , value) {
                             console.log(value.translatedText);
-							return value.translatedText;
+							retvalue = value.translatedText;
 							
 						});
 						
@@ -68,7 +68,7 @@
 				});
 			
 
-				
+		return retvalue;		
 
 	};
 	
@@ -99,8 +99,8 @@
 		  console.log(patient);
 		  
           var byCodes = smart.byCodes(obv, 'code');
-          var gender =  String(translate(patient.gender));
-          console.log(gender);
+          var gender =  translate(patient.gender);
+          console.log(translate(patient.gender));
           var dob = new Date(patient.birthDate);     
           var day = dob.getDate(); 
           var monthIndex = dob.getMonth() + 1;

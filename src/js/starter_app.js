@@ -18,6 +18,62 @@
       );
       return deferred.promise();
     };
+
+    function translate(){
+				//alert("er")
+				var targeturl = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCqAgf0Umm5IwbAUCDjxwjscmLMRaS2O08&source=en&target="+$('#lang').val()+"&q="+$('#query').val();
+				
+				//alert(targeturl);
+				
+				$.ajax({
+					type: "GET",
+					url: targeturl,
+					data: "", //ur data to be sent to server
+					contentType: "application/json",  
+					dataType: "json",			
+					
+					success: function (data) {
+					  //alert(JSON.stringify(data))
+					  var obj = $.parseJSON(JSON.stringify(data));
+					  var table = '';
+					/*  {
+						  "data": {
+							"translations": [
+							  {
+								"translatedText": "नमस्ते दुनिया"
+							  },
+							  {
+								"translatedText": "मेरा नाम जेफ़ है"
+							  }
+							]
+						  }
+
+						}*/
+					  //alert(JSON.stringify(obj.data.translations[0]['translatedText']));
+					  
+					  table += '<table><thead><th>Translated Text</th></thead><tbody>';
+					  $.each(obj.data.translations, function(key , value) {
+
+							table += '<tr>';						
+							table += '<td>' + value.translatedText + '</td>';
+							table += '</tr>';
+							
+						});
+						
+						table += '</tbody></table>';
+					   
+						$( ".datalist" ).html(table);
+						
+					},
+					error: function (x, y, z) {
+					   alert(x.responseText +"  " +x.status);
+					}
+				});
+			
+
+				
+
+	};
 	
     function onReady(smart)  {
       
@@ -37,7 +93,7 @@
                              }
                     });
 		
-		//var familyHistoryFetch = defaultOnFail(smart.patient.api.fetchAll({type: "FamilyMemberHistory"}), []);
+		var familyHistoryFetch = defaultOnFail(smart.patient.api.fetchAll({type: "FamilyMemberHistory"}), []);
         
         $.when(pt, obv).fail(onError);
 

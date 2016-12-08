@@ -53,7 +53,7 @@
 					  
 					  //table += '<table><thead><th>Translated Text</th></thead><tbody>';
 					  $.each(obj.data.translations, function(key , value) {
-                            console.log(value.translatedText);
+                            console.log("inside:" + value.translatedText);
 							retvalue = value.translatedText;
 							
 						});
@@ -67,7 +67,7 @@
 					}
 				});
 			
-        console.log(retvalue);
+        console.log("retvalue:" + retvalue);
 		return retvalue;		
 
 	};
@@ -100,7 +100,7 @@
 		  
           var byCodes = smart.byCodes(obv, 'code');
           var gender =  translate(patient.gender);
-          console.log(translate(patient.gender));
+          console.log(gender);
           var dob = new Date(patient.birthDate);     
           var day = dob.getDate(); 
           var monthIndex = dob.getMonth() + 1;

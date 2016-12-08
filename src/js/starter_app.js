@@ -131,6 +131,7 @@
             isBio : false
       }
     }
+  };
   }
 
   function getBloodPressureValue(BPObservations, typeOfPressure){

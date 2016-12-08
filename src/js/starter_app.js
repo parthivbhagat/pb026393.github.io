@@ -155,7 +155,7 @@
       motherName: {value: ''}
     }
   };
-  }
+  
 
   function getBloodPressureValue(BPObservations, typeOfPressure){
     var formattedBPObservations = [];

@@ -1,3 +1,1 @@
-# pb026393.github.io
-
-SMART ON FHIR STARTER APP
+# smart-starter-app-es5

@@ -99,7 +99,7 @@
 		  console.log(patient);
 		  
           var byCodes = smart.byCodes(obv, 'code');
-          var gender = patient.gender;
+          var gender = translate(patient.gender);
           var dob = new Date(patient.birthDate);     
           var day = dob.getDate(); 
           var monthIndex = dob.getMonth() + 1;

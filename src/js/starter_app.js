@@ -31,7 +31,8 @@
                         code: {
                           $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
                                 'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
-                                'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
+                                'http://loinc.org|2089-1', 'http://loinc.org|55284-4',
+								'http://loinc.org|8867-4']
                               }
                              }
                     });
@@ -63,7 +64,7 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
-
+          var hr = byCodes('8867-4');
           var p = defaultPatient();          
           p.birthdate = dobStr;
           p.gender = gender;
@@ -89,6 +90,10 @@
 
           if(typeof ldl[0] != 'undefined' && typeof ldl[0].valueQuantity.value != 'undefined' && typeof ldl[0].valueQuantity.unit != 'undefined') {
             p.ldl = ldl[0].valueQuantity.value + ' ' + ldl[0].valueQuantity.unit;
+          }
+		  
+		  if(typeof hr[0] != 'undefined' && typeof hr[0].valueQuantity.value != 'undefined' &&  hr[0].valueQuantity.unit != 'undefined') {
+            p.hr = hr[0].valueQuantity.value + ' ' + hr[0].valueQuantity.unit;
           }
 		  
 		 /* $.each(familyHistories, function(index, fh){
@@ -136,6 +141,7 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
+	  hr: {value: ''},
 	  familyHistory: {
           father : {
             height: null,

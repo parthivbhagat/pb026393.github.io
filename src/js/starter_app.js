@@ -23,7 +23,7 @@
 				//alert("er")
 				var targeturl = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCqAgf0Umm5IwbAUCDjxwjscmLMRaS2O08&source=en&target=hi&q=" + query;
 				
-				//alert(targeturl);
+				console.log(targeturl);
 				
 				$.ajax({
 					type: "GET",
@@ -53,7 +53,7 @@
 					  
 					  //table += '<table><thead><th>Translated Text</th></thead><tbody>';
 					  $.each(obj.data.translations, function(key , value) {
-
+                            console.log(value.translatedText);
 							return value.translatedText;
 							
 						});

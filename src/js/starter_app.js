@@ -21,7 +21,7 @@
 
     function translate(){
 				//alert("er")
-				var targeturl = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCqAgf0Umm5IwbAUCDjxwjscmLMRaS2O08&source=en&target="+$('#lang').val()+"&q="+$('#query').val();
+				var targeturl = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCqAgf0Umm5IwbAUCDjxwjscmLMRaS2O08&source=en&target=hi&q=test";
 				
 				//alert(targeturl);
 				
@@ -78,6 +78,7 @@
     function onReady(smart)  {
       
       if (smart.hasOwnProperty('patient')) { 
+
         var patient = smart.patient;
         var pt = patient.read();
 		
@@ -99,6 +100,7 @@
 
         $.when(pt, obv).done(function(patient, obv) {
 		  console.log(patient);
+		  translate();
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var dob = new Date(patient.birthDate);     

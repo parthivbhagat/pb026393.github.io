@@ -19,9 +19,9 @@
       return deferred.promise();
     };
 
-    function translate(){
+    function translate(query){
 				//alert("er")
-				var targeturl = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCqAgf0Umm5IwbAUCDjxwjscmLMRaS2O08&source=en&target=hi&q=test";
+				var targeturl = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCqAgf0Umm5IwbAUCDjxwjscmLMRaS2O08&source=en&target=hi&q=" + query;
 				
 				//alert(targeturl);
 				
@@ -51,18 +51,15 @@
 						}*/
 					  //alert(JSON.stringify(obj.data.translations[0]['translatedText']));
 					  
-					  table += '<table><thead><th>Translated Text</th></thead><tbody>';
+					  //table += '<table><thead><th>Translated Text</th></thead><tbody>';
 					  $.each(obj.data.translations, function(key , value) {
 
-							table += '<tr>';						
-							table += '<td>' + value.translatedText + '</td>';
-							table += '</tr>';
+							return value.translatedText;
 							
 						});
 						
-						table += '</tbody></table>';
-					   
-						$( ".datalist" ).html(table);
+						   
+						//$( ".datalist" ).html(table);
 						
 					},
 					error: function (x, y, z) {
@@ -100,7 +97,7 @@
 
         $.when(pt, obv).done(function(patient, obv) {
 		  console.log(patient);
-		  translate();
+		  
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var dob = new Date(patient.birthDate);     
@@ -130,7 +127,7 @@
           var p = defaultPatient();          
           p.birthdate = dobStr;
           p.gender = gender;
-          p.fname = fname;
+          p.fname = translate(fname);
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
 

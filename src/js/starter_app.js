@@ -55,7 +55,7 @@
 					  $.each(obj.data.translations, function(key , value) {
                             console.log("inside:" + value.translatedText);
 							retvalue = value.translatedText;
-							
+							console.log("inside: retvalue: " + value.translatedText);
 						});
 						
 						   

@@ -284,18 +284,23 @@
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);  
     $('#age').html(p.age);
+    
     $('#height').html(p.height.substr(0,p.height.indexOf(' ')));
     //$('#height').html(p.height);
+    
     var sysnum = p.systolicbp.substr(0,p.systolicbp.indexOf(' '));
     $('#systolicbp').html(sysnum);
     //$('#systolicbp').html(p.systolicbp);
     var diasnum = p.diastolicbp.substr(0,p.diastolicbp.indexOf(' '));    
     $('#diastolicbp').html(diasnum);
     //$('#diastolicbp').html(p.diastolicbp);
-    $('#ldl').html(p.ldl.substr(0,p.ldl.indexOf(' ')));
+    
+    try{ $('#ldl').html(p.ldl.substr(0,p.ldl.indexOf(' '))); }
+    catch(e){}
     //$('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl.substr(0,p.hdl.indexOf(' ')));
     //$('#hdl').html(p.hdl);
+    
     var hrnum = p.hr.substr(0,p.hr.indexOf(' '));    
     $('#hr').html(hrnum);
     //$('#hr').html(p.hr);

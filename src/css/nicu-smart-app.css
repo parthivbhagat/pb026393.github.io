@@ -131,8 +131,22 @@ float:left;
 border-right:1px solid #F0F0F0;
 padding-right:4px;
 width: 52%;
-
 }
+
+
+.details-results-group .third-col{
+width:33%;
+box-sizing: border-box;
+display: inline-block;
+float:left;
+}
+.details-results-group .twothirds-col{
+width:66%;
+box-sizing: border-box;
+display: inline-block;
+float:left;
+}
+
 
 
 .select-group {

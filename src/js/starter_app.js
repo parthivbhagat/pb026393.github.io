@@ -25,7 +25,7 @@
 
 		  	var req = $.ajax({
 						type: "GET",
-						url: targeturl,
+						url: url,
 						data: "", //ur data to be sent to server
 						contentType: "application/json",  
 						dataType: "json",			

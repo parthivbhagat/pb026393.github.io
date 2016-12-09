@@ -144,7 +144,7 @@
           p.birthdate = dobStr;
           p.gender = gender;
           p.fname = "xyx";
-          console(translate(p, fname));          
+          console.log(translate(p, fname));          
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
 

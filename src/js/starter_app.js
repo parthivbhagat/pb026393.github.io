@@ -369,10 +369,10 @@
     $('#fname').html(p.fname);
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
-    $('#birthdate').html(p.birthdate);  
-    $('#age').html(p.age);
+    $('#birthdate').html("11/30/2016");  
+    $('#age').html("10 days");
     
-    $('#height').html(p.height.substr(0,p.height.indexOf(' ')));
+    $('#height').html("47");//p.height.substr(0,p.height.indexOf(' ')));
     //$('#height').html(p.height);
     
     var sysnum = p.systolicbp.substr(0,p.systolicbp.indexOf(' '));

@@ -22,7 +22,6 @@
     function translate(patientfield, query){
 				//alert("er")
 
-
 				var targeturl = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCqAgf0Umm5IwbAUCDjxwjscmLMRaS2O08&source=en&target=hi&q=" + query;
 				var retvalue = "";
 				console.log(targeturl);
@@ -32,8 +31,7 @@
 					url: targeturl,
 					data: "", //ur data to be sent to server
 					contentType: "application/json",  
-					dataType: "json",			
-					async: false,
+					dataType: "json"
 					success: function (data) {
 					  //alert(JSON.stringify(data))
 					  var obj = $.parseJSON(JSON.stringify(data));

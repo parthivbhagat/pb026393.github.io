@@ -106,6 +106,20 @@ body{
 .details-results-group .label-spo2{ min-width: 70px;} 
 
 
+
+.details-results-group .value-ht,
+.details-results-group .value-ldl,
+.details-results-group .value-hdl{ font-size:19px; line-height: 21px;font-weight: normal;} 
+
+.details-results-group .label-ht,
+.details-results-group .label-ldl,
+.details-results-group .label-hdl{ font-size:13px; line-height: 15px; min-width: 70px;} 
+
+.details-results-group .thinrow {height: 30px;}
+
+
+
+
 .details-results-group .half-col{
 width:47%;
 box-sizing: border-box;

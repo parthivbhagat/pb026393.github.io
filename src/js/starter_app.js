@@ -145,7 +145,7 @@
           p.gender = gender;
           translate(p, fname).then(
 		    function (data) {
-		    	console("inside traslate" + data);
+		    	console.log("inside traslate" + data);
 		        p.fname = data;
 		    }, 
 		    function (response) {

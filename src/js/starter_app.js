@@ -289,9 +289,9 @@
       }
     });
     console.log(formattedBPObservations);
-    if(typeof formattedBPObservations[0].referenceRange != 'undefined'){
-      if (typeof formattedBPObservations[0].referenceRange.high.value != 'undefined' ) {
-        return formattedBPObservations[0].referenceRange.high.value ;
+    if(typeof formattedBPObservations[0].referenceRange[0] != 'undefined'){
+      if (typeof formattedBPObservations[0].referenceRange[0].high.value != 'undefined' ) {
+        return formattedBPObservations[0].referenceRange[0].high.value ;
       }
       else {
         return undefined;

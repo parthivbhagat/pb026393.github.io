@@ -276,6 +276,7 @@
     
   }
 
+
   window.drawVisualization = function(p) { 
     $('#holder').show();
     $('#loading').hide();
@@ -309,6 +310,8 @@
     $('#temp').html(p.temp);
     $('#fatherName').html(p.fatherName);
     $('#motherName').html(p.motherName);
+    
+    $('#lastUpdated'.html('Dec 08, 2016  16:21 CST');
     
   };
 

@@ -187,6 +187,14 @@
           if(typeof diastolicbphigh != 'undefined') {
             p.diastolicbphigh = diastolicbphigh;
           }
+
+          if(typeof systolicbplow != 'undefined')  {
+            p.systolicbplow = systolicbplow;
+          }
+
+          if(typeof diastolicbplow != 'undefined') {
+            p.diastolicbplow = diastolicbplow;
+          }
           
           if(typeof hdl[0] != 'undefined' && typeof hdl[0].valueQuantity.value != 'undefined' && typeof hdl[0].valueQuantity.unit != 'undefined') {
             p.hdl = hdl[0].valueQuantity.value + ' ' + hdl[0].valueQuantity.unit;
@@ -317,7 +325,7 @@
         formattedBPObservations.push(observation);
       }
     });
-    console.log(formattedBPObservations[0].referenceRange[0].low.value);
+    console.log(formattedBPObservations);
     if(typeof formattedBPObservations[0].referenceRange[0] != 'undefined'){
       if (typeof formattedBPObservations[0].referenceRange[0].low.value != 'undefined' ) {
         return formattedBPObservations[0].referenceRange[0].low.value ;

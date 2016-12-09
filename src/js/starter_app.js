@@ -18,6 +18,7 @@
       );
       return deferred.promise();
     };
+
     function get(url) {
 	  // Return a new promise.
 	  	return new Promise(function(resolve, reject) {
@@ -62,7 +63,7 @@
 			  console.log(obj.data);
 			  $.each(obj.data.translations, function(key , value) {
                     console.log("inside:" + value.translatedText);
-					retvalue = value.translatedText;
+					return value.translatedText;
 					console.log("inside: retvalue: " + retvalue);
 				});
 				
@@ -73,7 +74,7 @@
 				
 			
         console.log("retvalue:" + retvalue);
-		return retvalue;		
+		//return retvalue;		
 
 	};
 	

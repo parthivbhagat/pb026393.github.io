@@ -141,15 +141,15 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
           var hr = byCodes('8867-4');
-<<<<<<< HEAD
+
           var spo2 = byCodes('20564-1');
           var weight = byCodes('29463-7');
           var temp = byCodes('8310-5');
-=======
+
           var spo2 = byCodes('20564-1');
           var weight = byCodes('29463-7');
           var temp = byCodes('8310-5');
->>>>>>> origin/gh-pages
+
           var p = defaultPatient();          
           p.birthdate = dobStr;
           p.gender = gender;

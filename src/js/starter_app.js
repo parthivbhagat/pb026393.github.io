@@ -138,6 +138,8 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var systolicbphigh = getBloodPressureValueHigh(byCodes('55284-4'),'8480-6');
           var diastolicbphigh = getBloodPressureValueHigh(byCodes('55284-4'),'8462-4');
+          var systolicbplow = getBloodPressureValueLow(byCodes('55284-4'),'8480-6');
+          var diastolicbplow = getBloodPressureValueLow(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
           var hr = byCodes('8867-4');
@@ -274,7 +276,7 @@
     }    
     
   }
-
+  
   function getBloodPressureValueHigh(BPObservations, typeOfPressure){
     var formattedBPObservations = [];
     BPObservations.forEach(function(observation){
@@ -292,6 +294,33 @@
     if(typeof formattedBPObservations[0].referenceRange[0] != 'undefined'){
       if (typeof formattedBPObservations[0].referenceRange[0].high.value != 'undefined' ) {
         return formattedBPObservations[0].referenceRange[0].high.value ;
+      }
+      else {
+        return undefined;
+      }
+    }else{
+      return undefined;
+    }    
+    
+  }
+
+  function getBloodPressureValueLow(BPObservations, typeOfPressure){
+    var formattedBPObservations = [];
+    BPObservations.forEach(function(observation){
+      var BP = observation.component.find(function(component){
+        return component.code.coding.find(function(coding) {
+          return coding.code == typeOfPressure;
+        });
+      });
+      if (BP) { 
+        observation.referenceRange = BP.referenceRange;
+        formattedBPObservations.push(observation);
+      }
+    });
+    console.log(formattedBPObservations);
+    if(typeof formattedBPObservations[0].referenceRange[0] != 'undefined'){
+      if (typeof formattedBPObservations[0].referenceRange[0].low.value != 'undefined' ) {
+        return formattedBPObservations[0].referenceRange[0].low.value ;
       }
       else {
         return undefined;

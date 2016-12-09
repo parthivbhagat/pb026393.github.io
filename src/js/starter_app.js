@@ -31,7 +31,7 @@
 					url: targeturl,
 					data: "", //ur data to be sent to server
 					contentType: "application/json",  
-					dataType: "json"
+					dataType: "json",
 					success: function (data) {
 					  //alert(JSON.stringify(data))
 					  var obj = $.parseJSON(JSON.stringify(data));

@@ -22,62 +22,68 @@
 <section class="demographics-banner">
   <header>
     <div class="demographics-row">
-      <h1><span id='lname'></span>
-, <span id='fname'></span></h1>
+      <h1><span id='lname'></span>, <span id='fname'></span></h1>
       <h1>St. John's Heroes Wing Bed Eight</h1>
     </div>
     <div class="demographics-row">
-      <span>Age: <b id='age'></b> Gender: <b id='gender'></b> DOB: <b id='birthdate'></b></span>
-      <span>MRN: <b>6789235423</b></span>
+      <span>Age: <b id='age'></b>&nbsp;&nbsp;&nbsp; Gender: <b id='gender'></b>&nbsp;&nbsp;&nbsp; DOB: <b id='birthdate'></b></span><span>&nbsp;&nbsp;&nbsp;MRN: <b>6789235423</b></span>
     </div>
   </header>
 </section>    
+
+<section class="row baby-video-content">
+  <div class="details-panel"><div class="detials-panel-content">
+    <div class="details-results-group">
+    
+    
+    BP: <span id='systolicbp'></span> / <span id='diastolicbp'></span>
+
+<!-- 
+          <th>Systolic Blood Pressure:</th>
+          <th>Diastolic Blood Pressure:</th>
+-->
+    
+    
+    </div>
+    <div class="details-results-group">
+    2
+    
+    </div>
+    <div class="details-results-group">
+    3
+    
+    </div>
+  
+  
+  
+  
+  
+  
+  </div></div>
+  <div class="video-panel">
+		<iframe src="https://13.92.190.143/baby-AB?ab" class="video-iframe" frameBorder="0"></iframe>  
+  </div>
+</section>
+
+
 <!--
 </main>
 </div>
 -->
 
+
+
+
     <div id='holder' >
 
       <h2>Patient Resource</h2>
-      <table>
-        <tr>
-          <th>First Name:</th>
-          <td id='fname'></td>            
-        </tr>
-        <tr>
-          <th>Last Name:</th>
-          <td id='lname'></td>
-        </tr>
-        <tr>
-          <th>Gender:</th>
-          <td id='gender'></td>          
-        </tr>
-        <tr>
-          <th>Date of Birth:</th>
-          <td id='birthdate'></td>            
-        </tr>
-        <tr>
-          <th>Age:</th>
-          <td id='age'></td>            
-        </tr>       
-      </table>
+
       <h2>Observation Resource</h2>
       <table>
         <tr>
           <th>Height:</th>          
           <td id='height'></td>            
         </tr>
-        <tr>
-          <th>Systolic Blood Pressure:</th>
-          <td id='systolicbp'></td>
-            
-        </tr>
-        <tr>
-          <th>Diastolic Blood Pressure:</th>
-          <td id='diastolicbp'></td>
-        </tr>
-        <tr>
           <th>LDL:</th>
           <td id='ldl'></td>
         </tr>
@@ -89,7 +95,6 @@
     </div>
 	<div class="datalist">
 		<!--<iframe src="https://13.92.190.143/" height="500" width="600"></iframe>-->
-		<iframe src="https://13.92.190.143/baby-AB?ab" height="500" width="1500"></iframe>
 	</div>
     <script src='./src/js/starter_app.js'></script>
     <script src='./lib/fhir-client.min.js'></script>

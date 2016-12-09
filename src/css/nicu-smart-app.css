@@ -83,6 +83,13 @@ body{
 .details-results-group .label{font-size:12px;text-align: left; color:#9B9B9B;margin-left: 6px;}
 .details-results-group .label-uofm{display: block; font-weight: normal !important;font-size:12px !important;}
 
+
+.details-results-group .value .valuelow{color: #0053E6 !important; font-weight: bold !important;}
+.details-results-group .value .valuehigh{color: #FF6100 !important; font-weight: bold !important;}
+.details-results-group .value .valuecritical{color: #CC0000 !important; font-weight: bold !important;}
+
+
+
 .details-results-group .value-hr,
 .details-results-group .value-bp{font-size: 54px;line-height: 54px;}
 .details-results-group dl:first-of-type{margin-bottom:15px;}

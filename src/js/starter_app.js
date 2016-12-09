@@ -293,7 +293,9 @@
     //$('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
-    $('#hr').html(p.hr);
+    var hrnum = p.hr.substr(0,p.hr.indexOf(' '));    
+    $('#hr').html(hrnum);
+    //$('#hr').html(p.hr);
     $('#spO2').html(p.spo2);
     $('#weight').html(p.weight);  
     $('#temp').html(p.temp);

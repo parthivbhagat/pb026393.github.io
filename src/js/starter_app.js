@@ -18,9 +18,11 @@
       );
       return deferred.promise();
     };
-
+    
     function translate(patientfield, query){
 				//alert("er")
+
+
 				var targeturl = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCqAgf0Umm5IwbAUCDjxwjscmLMRaS2O08&source=en&target=hi&q=" + query;
 				var retvalue = "";
 				console.log(targeturl);

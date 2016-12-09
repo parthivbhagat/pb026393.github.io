@@ -22,31 +22,24 @@
     function get(url) {
 	  // Return a new promise.
 	  	return new Promise(function(resolve, reject) {
-	    // Do the usual XHR stuff
-	    var req = new XMLHttpRequest();
-	    req.open('GET', url);
 
-	    req.onload = function() {
-	      // This is called even on 404 etc
-	      // so check the status
-	      if (req.status == 200) {
-	        // Resolve the promise with the response text
-	        resolve(JSON.parse(req.response));
-	      }
-	      else {
-	        // Otherwise reject with the status text
-	        // which will hopefully be a meaningful error
-	        reject(Error(req.statusText));
-	      }
-	    };
-
-	    // Handle network errors
-	    req.onerror = function() {
-	      reject(Error("Network Error"));
-	    };
-
-	    // Make the request
-	    req.send();
+		  	var req = $.ajax({
+						type: "GET",
+						url: targeturl,
+						data: "", //ur data to be sent to server
+						contentType: "application/json",  
+						dataType: "json",			
+						
+						success: function (data) {
+						  resolve(JSON.parse(req.response));
+							
+						},
+						error: function (x, y, z) {
+						   reject(Error(req.statusText));
+						}
+					});
+		    
+		    req.send();
 	  });
 	}
 
@@ -133,14 +126,7 @@
           var p = defaultPatient();          
           p.birthdate = dobStr;
           p.gender = gender;
-          translate(p, fname).then(function(response) {
-			  console.log(response);
-		  	  p.fname = response;
-				
-		}, function(error) {
-		  console.error("Failed!", error);
-		});
-          
+          p.fname = translate(p, fname);          
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
 
@@ -172,26 +158,6 @@
             p.spo2 = spo2[0].valueQuantity.value + ' ' + spo2[0].valueQuantity.unit;
           }
 		  
-		 /* $.each(familyHistories, function(index, fh){
-			if (fh.resourceType === "FamilyMemberHistory") {
-				  var code = fh.relationship.coding[0].code;
-				  $.each(fh.extension || [], function(index, ext){
-					if (ext.url === "http://fhir-registry.smarthealthit.org/StructureDefinition/family-history#height") {
-					  var ht = units.cm(ext.valueQuantity);
-					  var r = null;
-					  if (code === 'FTH') {
-						r = p.familyHistory.father;
-					  } else if (code === 'MTH') {
-						r = p.familyHistory.mother;
-					  }
-					  if (r) {
-						r.height = ht;
-						r.isBio = true;
-					  }
-					}
-				  });
-			}
-		  });*/
 	      console.log(p);
           ret.resolve(p);
         });

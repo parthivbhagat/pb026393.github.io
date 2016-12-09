@@ -58,8 +58,13 @@
 		console.log(targeturl);
         
           var deferred = $.Deferred();
-	      $.when(get(targeturl)).then(
-	          function(response) {
+	      $.when($.ajax({
+					type: "GET",
+					url: targeturl,
+					data: "", //ur data to be sent to server
+					contentType: "application/json",  
+					dataType: "json"})).then(
+	         function(response) {
 					  console.log(response);
 				  	  var obj = $.parseJSON(JSON.stringify(response));
 					  console.log(obj.data);

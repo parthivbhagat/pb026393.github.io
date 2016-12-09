@@ -18,54 +18,57 @@
       );
       return deferred.promise();
     };
-    
+    function get(url) {
+  // Return a new promise.
+  return new Promise(function(resolve, reject) {
+    // Do the usual XHR stuff
+    var req = new XMLHttpRequest();
+    req.open('GET', url);
+
+    req.onload = function() {
+      // This is called even on 404 etc
+      // so check the status
+      if (req.status == 200) {
+        // Resolve the promise with the response text
+        resolve(req.response);
+      }
+      else {
+        // Otherwise reject with the status text
+        // which will hopefully be a meaningful error
+        reject(Error(req.statusText));
+      }
+    };
+
+    // Handle network errors
+    req.onerror = function() {
+      reject(Error("Network Error"));
+    };
+
+    // Make the request
+    req.send();
+  });
+}
     function translate(patientfield, query){
 				//alert("er")
 
-				var targeturl = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCqAgf0Umm5IwbAUCDjxwjscmLMRaS2O08&source=en&target=hi&q=" + query;
-				var retvalue = "";
-				console.log(targeturl);
-				
-				$.ajax({
-					type: "GET",
-					url: targeturl,
-					data: "", //ur data to be sent to server
-					contentType: "application/json",  
-					dataType: "json",
-					success: function (data) {
-					  //alert(JSON.stringify(data))
-					  var obj = $.parseJSON(JSON.stringify(data));
-					  var table = '';
-					/*  {
-						  "data": {
-							"translations": [
-							  {
-								"translatedText": "नमस्ते दुनिया"
-							  },
-							  {
-								"translatedText": "मेरा नाम जेफ़ है"
-							  }
-							]
-						  }
+		var targeturl = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCqAgf0Umm5IwbAUCDjxwjscmLMRaS2O08&source=en&target=hi&q=" + query;
+		var retvalue = "";
+		console.log(targeturl);
 
-						}*/
-					  //alert(JSON.stringify(obj.data.translations[0]['translatedText']));
-					  
-					  //table += '<table><thead><th>Translated Text</th></thead><tbody>';
-					  $.each(obj.data.translations, function(key , value) {
-                            console.log("inside:" + value.translatedText);
-							patientfield.fname = value.translatedText;
-							console.log("inside: retvalue: " + value.translatedText);
-						});
-						
-						   
-						//$( ".datalist" ).html(table);
-						
-					},
-					error: function (x, y, z) {
-					   alert(x.responseText +"  " +x.status);
-					}
+		get(targeturl).then(function(data) {
+		  	  var obj = $.parseJSON(JSON.stringify(data));
+			  
+			  $.each(obj.data.translations, function(key , value) {
+                    console.log("inside:" + value.translatedText);
+					retvalue = value.translatedText;
+					console.log("inside: retvalue: " + retvalue);
 				});
+				
+		}, function(error) {
+		  console.error("Failed!", error);
+		});
+				
+				
 			
         console.log("retvalue:" + retvalue);
 		return retvalue;		

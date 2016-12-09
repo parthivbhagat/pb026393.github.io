@@ -401,11 +401,11 @@
     
     var hrnum = p.hr.substr(0,p.hr.indexOf(' '));    
     $('#hr').html(hrnum);
-    $('#rr').html(p.rr);
+    $('#rr').html(p.rr.value);
     //$('#hr').html(p.hr);
-    $('#spO2').html(p.spo2);
-    $('#weight').html(p.weight);  
-    $('#temp').html(p.temp);
+    $('#spO2').html(p.spo2.value);
+    $('#weight').html(p.weight.value);  
+    $('#temp').html(p.temp.value);
     $('#fatherName').html(p.fatherName);
     $('#motherName').html(p.motherName);
     

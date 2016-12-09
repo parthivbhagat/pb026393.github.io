@@ -56,8 +56,9 @@
 		console.log(targeturl);
 
 		get(targeturl).then(function(data) {
+			  console.log(data);
 		  	  var obj = $.parseJSON(JSON.stringify(data));
-			  
+			  console.log(obj);
 			  $.each(obj.data.translations, function(key , value) {
                     console.log("inside:" + value.translatedText);
 					retvalue = value.translatedText;

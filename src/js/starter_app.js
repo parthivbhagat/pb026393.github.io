@@ -52,25 +52,30 @@
 
     function translate(patientfield, query){
 				//alert("er")
-
+        console.log("patient: " +  patientfield);
 		var targeturl = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyCqAgf0Umm5IwbAUCDjxwjscmLMRaS2O08&source=en&target=hi&q=" + query;
 		var retvalue = "";
 		console.log(targeturl);
-
-		get(targeturl).then(function(response) {
-			  console.log(response);
-		  	  var obj = $.parseJSON(JSON.stringify(response));
-			  console.log(obj.data);
-			  $.each(obj.data.translations, function(key , value) {
-                    console.log("inside:" + value.translatedText);
-					return value.translatedText;
-					console.log("inside: retvalue: " + retvalue);
-				});
-				
-		}, function(error) {
-		  console.error("Failed!", error);
-		});
-				
+        
+          var deferred = $.Deferred();
+	      $.when(get(targeturl)).then(
+	          function(response) {
+					  console.log(response);
+				  	  var obj = $.parseJSON(JSON.stringify(response));
+					  console.log(obj.data);
+					  $.each(obj.data.translations, function(key , value) {
+		                    console.log("inside:" + value.translatedText);
+							deferred.resolve(value.translatedText); 
+							console.log("inside: retvalue: " + retvalue);
+						});
+						
+			 },
+	          function(error) {
+		  		deferred.refect("error"); 
+			});
+	      
+	      return deferred.promise();
+		
 				
 			
         console.log("retvalue:" + retvalue);
@@ -97,7 +102,7 @@
                              }
                     });
 		
-		var familyHistoryFetch = defaultOnFail(smart.patient.api.fetchAll({type: "FamilyMemberHistory"}), []);
+		var familyHistoryFetch = defaultOnFail(smart.patient.api.fetchAll({type: "RelatedPerson"}), []);
         
         $.when(pt, obv).fail(onError);
 

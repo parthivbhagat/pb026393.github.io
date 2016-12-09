@@ -103,7 +103,7 @@
                                 'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
                                 'http://loinc.org|2089-1', 'http://loinc.org|55284-4',
 								'http://loinc.org|8867-4', 'http://loinc.org|20564-1',
-								'http://loinc.org|29463-7']
+								'http://loinc.org|29463-7', 'http://loinc.org|8310-5']
                               }
                              }
                     });
@@ -141,6 +141,7 @@
           var hr = byCodes('8867-4');
 		  var spo2 = byCodes('20564-1');
 		  var weight = byCodes('29463-7');
+		  var temp = byCodes('8310-5');
           var p = defaultPatient();          
           p.birthdate = dobStr;
           p.gender = gender;
@@ -187,6 +188,10 @@
 		  if(typeof weight[0] != 'undefined' && typeof weight[0].valueQuantity.value != 'undefined' &&  weight[0].valueQuantity.unit != 'undefined') {
             p.weight = weight[0].valueQuantity.value + ' ' + weight[0].valueQuantity.unit;
           }
+
+          if(typeof temp[0] != 'undefined' && typeof temp[0].valueQuantity.value != 'undefined' &&  temp[0].valueQuantity.unit != 'undefined') {
+            p.temp = temp[0].valueQuantity.value + ' ' + temp[0].valueQuantity.unit;
+          }
 	      console.log(p);
           ret.resolve(p);
         });
@@ -215,6 +220,7 @@
 	  hr: {value: ''},
 	  spo2: {value: ''},
 	  weight: {value: ''},
+	  temp: {value: ''},
 	  fatherName: {value: ''},
       motherName: {value: ''}
     }

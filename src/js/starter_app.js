@@ -317,7 +317,7 @@
         formattedBPObservations.push(observation);
       }
     });
-    console.log(formattedBPObservations[0].referenceRange[0].low);
+    console.log(formattedBPObservations[0].referenceRange[0].low.value);
     if(typeof formattedBPObservations[0].referenceRange[0] != 'undefined'){
       if (typeof formattedBPObservations[0].referenceRange[0].low.value != 'undefined' ) {
         return formattedBPObservations[0].referenceRange[0].low.value ;

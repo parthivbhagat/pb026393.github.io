@@ -249,9 +249,10 @@
       ldl: {value: ''},
       hdl: {value: ''},
       hr: {value: ''},
-      spo2: {value: ''},
-      weight: {value: ''},
-      temp: {value: ''},
+      rr: {value: '27'},
+      spo2: {value: '97'},
+      weight: {value: '0.95'},
+      temp: {value: '37.0'},
       fatherName: {value: ''},
       motherName: {value: ''}
     }
@@ -400,6 +401,7 @@
     
     var hrnum = p.hr.substr(0,p.hr.indexOf(' '));    
     $('#hr').html(hrnum);
+    $('#rr').html(p.rr);
     //$('#hr').html(p.hr);
     $('#spO2').html(p.spo2);
     $('#weight').html(p.weight);  

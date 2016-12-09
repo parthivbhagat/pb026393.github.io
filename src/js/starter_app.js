@@ -76,7 +76,7 @@
 						
 			 },
 	          function(error) {
-		  		deferred.refect("error"); 
+		  		deferred.reject("error"); 
 			});
 	      
 	      
@@ -143,8 +143,7 @@
           var p = defaultPatient();          
           p.birthdate = dobStr;
           p.gender = gender;
-          p.fname = "xyx";
-          console.log(translate(p, fname));          
+          p.fname = translate(p, fname);          
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
 

@@ -284,7 +284,7 @@
         });
       });
       if (BP) { 
-        observation.valueQuantity = BP.valueQuantity;
+        observation.referenceRange = BP.referenceRange;
         formattedBPObservations.push(observation);
       }
     });

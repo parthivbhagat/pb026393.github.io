@@ -146,7 +146,7 @@
           translate(p, fname).then(
 		    function (data) {
 		    	console.log("inside traslate" + data);
-		        p.fname = data;
+		        $("#fname").html(data);
 		    }, 
 		    function (response) {
 		        alert(response);

@@ -380,7 +380,18 @@
     var diasnum = p.diastolicbp.substr(0,p.diastolicbp.indexOf(' '));    
     $('#diastolicbp').html(diasnum);
     //$('#diastolicbp').html(p.diastolicbp);
-    
+    if(sysnum < systolicbplow){
+       $('#systolicbp').addClass("valuelow");
+    }
+    if(sysnum > systolicbphigh){
+       $('#systolicbp').addClass("valuehigh");
+    }
+    if(diasnum < diastolicbplow){
+       $('#diastolicbp').addClass("valuelow");
+    }
+    if(diasnum > diastolicbphigh){
+       $('#diastolicbp').addClass("valuehigh");
+    }
     try{ $('#ldl').html(p.ldl.substr(0,p.ldl.indexOf(' '))); }
     catch(e){}
     //$('#ldl').html(p.ldl);

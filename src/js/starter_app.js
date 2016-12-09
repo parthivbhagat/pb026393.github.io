@@ -237,7 +237,7 @@
       });
       if (BP) { 
         observation.valueQuantity = BP.valueQuantity;
-        formattedBPObservations.push(observation);
+        //formattedBPObservations.push(observation);
       }
     });
     console.log(formattedBPObservations);

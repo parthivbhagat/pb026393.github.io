@@ -71,7 +71,7 @@
 					  $.each(obj.data.translations, function(key , value) {
 		                    console.log("inside:" + value.translatedText);
 							deferred.resolve(value.translatedText); 
-							console.log("inside: retvalue: " + retvalue);
+							
 						});
 						
 			 },
@@ -79,12 +79,12 @@
 		  		deferred.refect("error"); 
 			});
 	      
-	      return deferred.promise();
+	      
 		
 				
 			
-        console.log("retvalue:" + retvalue);
-		//return retvalue;		
+        console.log("retvalue:" + deferred.promise());
+		return deferred.promise();		
 
 	};
 	
@@ -143,7 +143,8 @@
           var p = defaultPatient();          
           p.birthdate = dobStr;
           p.gender = gender;
-          p.fname = translate(p, fname);          
+          p.fname = "xyx";
+          console(translate(p, fname));          
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
 

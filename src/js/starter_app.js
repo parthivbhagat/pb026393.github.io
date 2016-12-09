@@ -240,13 +240,18 @@
         formattedBPObservations.push(observation);
       }
     });
-           
-    if (typeof formattedBPObservations[0].valueQuantity.value != 'undefined' && formattedBPObservations[0].valueQuantity.unit != 'undefined') {
-      return formattedBPObservations[0].valueQuantity.value + ' ' + formattedBPObservations[0].valueQuantity.unit ;
-    }
-    else {
-      return undefined;
-    }
+    
+    if(typeof formattedBPObservations != undefined){
+    	if (typeof formattedBPObservations[0].valueQuantity.value != 'undefined' && formattedBPObservations[0].valueQuantity.unit != 'undefined') {
+	      return formattedBPObservations[0].valueQuantity.value + ' ' + formattedBPObservations[0].valueQuantity.unit ;
+	    }
+	    else {
+	      return undefined;
+	    }
+    }else{
+    	return undefined;
+    }    
+    
   }
 
   function isLeapYear(year) {

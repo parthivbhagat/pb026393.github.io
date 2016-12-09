@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Powerchart</title>
+	<link rel="stylesheet" href="../css/contextual.css">
+</head>
+
+<body>
+<div id="windows10">
+    <div class="windows10-title">PowerChart</div>
+    <div class="windows10-icons"><img src="../images/windows10-icons.png"></div>
+</div>
+<div id="powerchart-wrapper">
+<div class="demo-bar">
+    <img src="images/mug-30x30.jpg" height="45" width="45" class="patient-photo">
+    <div class="patient-name"><h2>Albers, Tom</h2></div><!-- END .patient-name -->
+    <div class="column">
+    	<p>DOB: 9/17/1936</p>
+    	<p>Weight: 212 lb.</p>
+    </div><!-- END .column -->
+      <div class="column">
+    	<p>Age: 78 years</p>
+    	<p>MRN: 00000945</p>
+    </div><!-- END .column -->
+      <div class="column">
+    	<p>Sex: Male</p>
+    	<p>FIN: 0003412</p>
+    </div><!-- END .column -->
+      <div class="column">
+    	<p>Allergies: Shellfish, Peanuts</p>
+    	<p></p>
+    </div><!-- END .column -->
+    <div class="more-options">
+        <span></span><span></span><span></span>
+    </div>
+</div><!-- END #demo-bar -->
+
+<div id="powerchart-containerI">
+<div id="powerchart-container">
+    <div id="smartzone">
+       
+
+    </div>
+	<div id="powerchart-body">
+		<div id="mPage-wrapper">
+			<div id="mPage-tab-cont">
+                <div id="tab-cont">
+                	<div class="tab active" tabId="1" content="cont-admit" label="Admit">Admit <span class="close"></span></div>
+                	<div class="tab" tabId="2" content="cont-man" label="Manager">Manage<span class="close"></span></div>
+                	<div class="tab" tabId="3" content="cont-dis" label="Discharge">Discharge<span class="close"></span></div>
+                	<div class="tab hide" tabId="4" content="cont-some" label="Meds Reconciliation">Meds Reconciliation<span class="close"></span></div>
+                </div><!-- END #tab-cont -->
+                <div class="add-tab"></div>          
+				<div id="mPage-menu">
+					<div class="menu">
+                        <span class="menu-icon"></span>
+                        <div class="menu-content">
+                            <ul>
+                                <li class="linebreak"><span>Something Here</span></li>
+                                <li class="disabled"><span>Disabled Link</span></li>
+                                <li><span>Something</span></li>
+                                <li><span>Something Here</span></li>
+                                <li><span>Some link Goes Here</span></li>
+                            </ul>
+                        </div><!-- END .menu-content -->
+                    </div><!-- END .menu -->
+				</div><!-- END #mPage-menu -->
+			</div><!-- END #mPage-tab-cont -->
+            <div id="mPage-page-wrapper">
+                 <div id="mPage-page-cont">
+                    <div id="mPage-page">
+                        <div style="margin-top:10px;">
+                            <iframe width="100%" src="workflowTemplate.html" class="iframeclass" frameBorder="0"></iframe>
+                       </div>
+                    </div><!-- END #mPage-page -->
+                    <div id="contextual-view">
+                    contextual view content
+                    </div>
+                </div><!-- END #mPage-page-cont -->
+            </div><!-- END #mPage-page-wrapper -->
+        </div><!-- END #mPage-wrapper -->
+	</div><!-- END #powerchart-body -->
+    </div><!-- END #powerchart-container -->
+</div><!-- END #powerchart-containerI -->
+<a href="endTitleTemplate.html" class="pc-next"><span></span></a>
+</div><!-- END #powerchart-wrapper -->
+</body>
+  
+<!-- JAVASCRIPT LIBRARIES -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/powerchart.js"></script>
+<script src="js/jquery.nav.js"></script>
+<script src="js/jquery.scrollTo.js"></script>
+<script src="js/jquery.scrollTo.min.js"></script>
+
+<!-- TAB JSON -->
+<script type="text/javascript">
+	var tabArr = [
+		{"id":"1" ,"label":"Admit", "content":"cont-admit"},
+		{"id":"2" ,"label":"Manage", "content":"cont-man"},
+	    {"id":"3" ,"label":"Discharge", "content":"cont-dis"},
+		{"id":"4" ,"label":"Something Else", "content":"cont-some"}
+	];
+	var openTabs = [
+	    {"tabId":"1" ,"label":"Admit", "content":"cont-admit"},
+	    {"tabId":"2" ,"label":"Manage", "content":"cont-man"},
+	    {"tabId":"3" ,"label":"Discharge", "content":"cont-dis"}
+	];
+	var activeTab = [];
+	var lastOpened = [];
+</script>
+
+<!-- === JQUERY FOR THIS PAGE === -->
+<script>
+
+$(document).ready(sizeContent);
+    //Resize window
+    $(window).resize(sizeContent);
+        function sizeContent() {
+        //Get 'HTML' height as variable, subtract height of header area
+            var newHeight = $("html").height() - 125 + "px";
+            $(".iframeclass").css("height", newHeight);
+        }
+    //All Other functions
+    $(function(){
+        $('#acutenav').onePageNav();
+
+        // LISTENER for iFrame Data
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+        eventer(messageEvent, function (e) {
+               var content = e.data.split('|');
+               //IF DATA IS FOR A NEW TAB. Will work for now, but is not flexible enough for future framework use
+               if (content[0] == 'tab'){
+                    var thisTID = String(2)
+                    var newItem = [];
+                    newItem.push({
+                        content: content[1],
+                        label: content[2],
+                        tabId: thisTID
+                    });
+                    openTabs.splice(2,1, newItem[0]);
+                    lastOpened = $(".tab.active").attr('tabId');
+                    activeTab = thisTID;
+                    console.log(lastOpened);
+                    console.log(activeTab);
+
+                    $(".tab[tabId='5']").attr('tabId', '6');
+                    $(".tab[tabId='4']").attr('tabId', '5');
+                    $(".all-tab-item[tabId='5']").attr('tabId', '6');
+                    $(".all-tab-item[tabId='4']").attr('tabId', '5');
+                    var tabHTML ='<div class="tab active" tabId="'+thisTID+'" content="'+content[1]+'" label="'+content[2]+'">'+content[2]+'<span class="close"></span></div>'
+
+                    $(".tab.active").after(tabHTML);
+                    $(".tab[tabId='"+lastOpened+"']").removeClass('active');
+                    //countTabs(3);
+
+                    tabArr.push(newItem[0]);
+                    $(".all-tabs-dd").append('</br><a href="#" class="all-tab-item" tabId="'+thisTID+'" content="'+content[1]+'" label="'+content[2],+'">'+content[2],+'</a>');
+
+                    $("#cont-add").hide();
+                    $(".image-content").hide();
+                    $("#"+content[1]).css('display', 'inline-block');
+               }
+               if (content[0] == 'sz'){
+                    //CODE FOR SMART ZONE
+                   if (!content[4] == '') {
+                    var alert = '<div class="sz-alert-wrap"><div class="sz-alert '+content[1]+' new"><div class="sz-alert-bubble"><div class="sz-alert-header"><span class="sz-icon"></span><h4>'+content[2]+'</h4> <span class="sz-alert-close"></span></div><div class="sz-alert-content"><p>'+content[3]+'</p><div class="sz-alert-btn">'+content[4]+'</div></div><div class="sz-alert-suc">'+content[5]+'</div></div></div></div>'
+                    }
+                    else {
+                        var alert = '<div class="sz-alert-wrap"><div class="sz-alert '+content[1]+' new"><div class="sz-alert-bubble"><div class="sz-alert-header"><span class="sz-icon"></span><h4>'+content[2]+'</h4> <span class="sz-alert-close"></span></div><div class="sz-alert-content"><p>'+content[3]+'</p></div><div class="sz-alert-suc">'+content[5]+'</div></div></div></div>'
+                    }
+
+                   $('#smartzone').append(alert);
+                   $('.sz-alert.new').slideDown(150, function(){
+                        $(".sz-alert-bubble").hide();
+                        $(this).find(".sz-alert-bubble").fadeIn(250);
+                        $(this).removeClass('new');
+                   });
+                   
+
+                   $(".sz-alert-close").on( "click", function() {
+                        $(this).parent().parent().fadeOut(200);
+                   });
+
+                   $(".sz-alert-btn").on( "click", function() {
+                        var $this = $(this);
+                        $(this).parent().fadeOut(150, function(){
+                           $(this).siblings('.sz-alert-suc').fadeIn(200);      
+                        });
+                                       
+                        setTimeout(function(){
+                            $this.closest(".sz-alert-bubble").fadeOut(200, function(){
+                                $this.closest(".sz-alert").slideUp(100, function(){
+                                    $this.closest(".sz-alert-wrap").remove();
+                                });
+                            });
+                        }, 2000);
+                   });
+               }      
+        }, false); 
+
+    });
+
+</script>
+    
+</html>

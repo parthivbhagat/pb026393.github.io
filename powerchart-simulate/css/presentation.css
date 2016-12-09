@@ -1,0 +1,676 @@
+  /* CONTAINERS */
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  margin: 0; padding: 0; /* Browsers have default 8px margins _or_ padding! */
+  font-size: 100%; /* See: http://www.informationarchitects.jp/en/100e2r/ */
+  line-height: 1.5; /* Default value, `normal`, depends on the font */
+  font-family: Helvetica, Arial, san-sarif;
+  color:#393d41; /*Cerner Standard Text Color*/
+  font-size:25px;
+  height: 100%;
+  width: 100%;
+  background-color: #E8E9EA;
+  background-image: url(../images/bg-gradient.png);
+  background-repeat: no-repeat;
+}
+body.photo-background{
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+/* HTML5 blocks - needed in older browsers */
+article, aside, figcaption, figure, footer, header, nav, section {
+  display: block;
+}
+
+/* PARAGRAPHS */
+h1, h2, h3, h4 {
+  margin: 0 0 .3em; /* Titles should be close to the text they describe */
+  line-height: 1.25; /* Bigger text is often nicer with smaller line height */
+  font-weight: normal; /* Browser default. Use `normal` for less bulky titles */
+}
+h1 {font-size: 80px; font-weight: 800;}
+h2 {font-size: 60px;}
+h3 {font-size: 30px;}
+h4 {font-size: 20px;}
+ul, ol {
+  margin: 0; /* Default for all browsers except IE */
+  padding-left: 40px; /* IE has a 40px margin-left instead */
+  list-style-type: square;
+}
+li{
+  font-size:25px;
+  padding: 6px;
+    font-weight: 100;
+    color: #666;
+    line-height: 1.3em;
+}
+p {
+  margin: 0;
+  font-size:25px;
+}
+b {font-weight: 600}
+.small-text{font-size: 11px}
+.tiny-text{font-size: 10px}
+.disabled-text{color:#909496;}
+.white-text{color:#fff;}
+
+
+/* LINKS */
+/* Default browser styles (from Firefox, similar in most browsers) */
+a {
+  text-decoration: none;
+}
+a:link {color: #0000EE;}
+a:visited {color: #551A8B;}
+a:active {color: #EE0000;}
+/* Add your own styles for hover _and_ focus styles */
+a:hover, a:focus {
+  /* ... */
+}
+/* Remove dotted outline clicked links - Keeps outline on focus */
+a:active, a:hover {
+  outline: none;
+}
+/* No border around images in links */
+a img {
+  border: none;
+}
+
+/* MISC TEXT-LEVEL ELEMENTS */
+/* Make quotations and references more visible */
+q, cite {
+  font-style: italic;
+}
+/* Remove automatic quotation marks for inline quotations
+   (`q {quotes:none}` not implemented in WebKit) */
+q:before, q:after {
+  content: "";
+}
+/* Stopping superscript and subscript from adding to the line's leading */
+sup, sub {
+  line-height: 0;
+}
+
+/* FORMS */
+fieldset {
+  margin: 0; /* Common default is `0 2px` */
+  padding: 0; /* Common default (roughly): `.35em .625em .75em` */
+  border: none;
+}
+input, button, select {
+  vertical-align: middle; /* Helps keep form elements roughly aligned */
+}
+label{color:#373F42;}
+
+/* TABLES */
+table {
+  border-collapse: collapse; /* Merges cell borders together */
+  /* Browser default: border-collapse: separate; border-spacing: 2px; */
+}
+td, th {
+  padding: 1px; /* Same as browser default - set to "0" to remove padding */
+  vertical-align: top; /* Default is "middle" */
+  text-align: left; /* Default for TH elements is "center" */
+}
+td:first-child, th:first-child {
+  empty-cells: hide; /* Hide empty cells when they're the first in the row */
+}
+
+/*================ TITLE SLIDES ===============*/
+#header {
+  width: 100%;
+  height: 80px;
+}
+.logo {
+  height: 80px;
+  width: 20%;
+  float: left;
+}
+.logo img {float:right; margin-top:26px; margin-right:40px;}
+.title{
+  position: relative;
+  width: 80%;
+  height: 80px;
+  float: left;
+}
+.title:after{
+  content: "";
+  width: 0;
+height: 0;
+border-style: solid;
+border-width: 80px 30px 0 0;
+border-color: #0d94d2 transparent transparent transparent;
+  top: 0px;
+  right: -30px;
+  position: absolute;
+}
+
+
+
+#content{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px;
+}
+#scene-links{
+  width: 750px;
+  margin-left: 100px;
+  margin-top: 50px;
+}
+.link{
+  float: left;
+  width: 100%;
+  padding-bottom: 30px;
+}
+.link img, .scene-cont img{
+  margin-right:15px;
+  float: left;
+}
+.link a {
+  text-decoration: none;
+}
+.scene-cont {
+  float: left;
+}
+.text-cont {
+  float: left;
+  width: 650px;
+}
+.scene-link {
+  position: fixed;
+  right: 27px;
+  top: 50%;
+  margin-top: -25px;
+  width: 100px;
+  height: 100px;
+  background: #0064A2;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+}
+.scene-link span {
+  width: 0; 
+  height: 0; 
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent; 
+  border-left: 35px solid #ffffff;
+  display: inline-block;
+  margin-left: 38px;
+  margin-top: 26px;
+}
+
+#device-cont .scene-link, #phone-cont .scene-link, #ipad-cont .scene-link {
+  position: fixed;
+  right: 27px;
+  top: 50%;
+  margin-top: -25px;
+  width: 100px;
+  height: 100px;
+  background: #9B9FA1;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+}
+#device-cont .scene-link span, #phone-cont .scene-link span {
+  width: 0; 
+  height: 0; 
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent; 
+  border-left: 35px solid #E8E9EA;
+  display: inline-block;
+  margin-left: 38px;
+  margin-top: 26px;
+}
+
+
+
+/*.v-center-I { 
+ height: 400px; 
+ position: relative;
+}
+.v-center-II { 
+ position: absolute; 
+ left: 0px; 
+ top: 0px; 
+ height: 400px;
+ width: 650px;
+ display: table; 
+}
+.v-center-III {
+ display: table-cell; 
+ vertical-align: middle; 
+}*/
+
+
+/*======================= DEVICE TEMPLATES ========================*/
+/*------IPHONE-------*/
+#device-cont{
+  width: 1385px;
+  margin-right: auto;
+  margin-left: auto;
+}
+#phone-cont {
+  width:700px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.phone-wrapper {
+  background-image: url(../images/iphone-wrapper.png);
+  background-repeat: no-repeat;
+  width: 401px;
+  height: 778px;
+  padding-top:110px;
+  padding-left: 27px;
+  float: left;
+  margin-top: 80px;
+  position: relative;
+}
+.phone-cont {
+  width: 375px;
+  height: 667px;
+  overflow: auto;
+  position: relative;
+  background-color: #ffffff;
+}
+.phone-cont::-webkit-scrollbar, .page-cont::-webkit-scrollbar {display: none;}
+
+.phone-wrapper .demo-bar{
+  height: 90px;
+  width: 375px;
+  background-color: #2795E9;
+  position: absolute;
+  left: 27px;
+  top: 110px;
+  color: #ffffff;
+}
+.phone-cont .demo-bar-space{
+  width: 100%;
+  height: 110px;
+}
+.phone-wrapper .demo-bar-name{
+  float: left;
+  margin-left: 10px;
+  font-size: 17px;
+}
+.phone-wrapper .demo-bar-name p{font-size: 20px;}
+
+.phone-wrapper .demo-bar-ar {
+   position: relative;
+    top: 0pt;
+    content: "";
+    display: inline-block;
+    /* By using an em scale, the arrows will size with the font */
+    width: 10px;
+    height: 10px;
+    border-right: 0.25em solid #ffffff;
+    border-top: 0.25em solid #ffffff;
+    transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    margin-right: 1.5em;
+    margin-top: 30px;
+    float: right;
+}
+.iphone-disable {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 420px;
+  height: 775px;
+}
+.iphone-time{
+  background-image: url(../images/iphone-time.png);
+  background-repeat: no-repeat;
+  background-position: 9px 0px;
+  width: 100%;
+  height: 12px;
+  padding-bottom: 12px;
+  margin-top: 2px;
+}
+
+/*------IPAD-------*/
+#ipad-cont {
+  width:1160px;
+  margin-right: auto;
+  margin-left: auto;
+  height: 1080px;
+  overflow: hidden;
+  position: relative;
+  left: 40px;
+}
+.ipad-wrapper {
+  background-image: url(../images/ipad-wrapper.png);
+  background-repeat: no-repeat;
+  width: 827px;
+  height: 1140px;
+  padding-top:112px;
+  padding-left: 60px;
+  float: left;
+  margin-top: -112px;
+  position: relative;
+}
+.ipad-cont {
+  width: 768px;
+  height: 1024px;
+  overflow: auto;
+  position: relative;
+  background-color: #ffffff;
+}
+.ipad-cont::-webkit-scrollbar, .page-cont::-webkit-scrollbar {display: none;}
+
+.ipad-wrapper .demo-bar{
+  height: 90px;
+  width: 768px;
+  background-color: #2795E9;
+  position: absolute;
+  left: 60px;
+  top: 112px;
+  color: #ffffff;
+}
+.ipad-cont .demo-bar-space{
+  width: 100%;
+  height: 90px;
+}
+.ipad-wrapper .demo-bar-name{
+  float: left;
+  margin-left: 10px;
+  font-size: 17px;
+}
+.ipad-wrapper .demo-bar-name p{font-size: 20px;}
+
+.ipad-wrapper .demo-bar-ar {
+   position: relative;
+    top: 0pt;
+    content: "";
+    display: inline-block;
+    /* By using an em scale, the arrows will size with the font */
+    width: 10px;
+    height: 10px;
+    border-right: 0.25em solid #ffffff;
+    border-top: 0.25em solid #ffffff;
+    transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    margin-right: 1.5em;
+    margin-top: 30px;
+    float: right;
+}
+.ipad-time{
+  background-image: url(../images/ipad-time.png);
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  width: 100%;
+  height: 12px;
+  padding-bottom: 12px;
+  margin-top: 2px;
+}
+
+
+/*------WATCH-------*/
+.watch-wrapper {
+  background-image: url(../images/watch-wrapper.png);
+  background-repeat: no-repeat;
+  width: 410px;
+  height: 466px;
+  padding-top:76px;
+  padding-left: 76px;
+  float: left;
+  margin-right: 200px;
+  margin-top: 230px;
+}
+.watch-cont {
+  width: 319px;
+  height: 390px;
+  overflow: auto;
+  position: relative;
+  background-color: #ffffff;
+}
+.watch-cont::-webkit-scrollbar {display: none;}
+
+
+/*------HORIZONTAL DEVICE------*/
+#ipad-cont.device-horizontal .ipad-wrapper{
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+#ipad-cont.device-horizontal .ipad-wrapper .ipad-cont,
+#ipad-cont.device-horizontal .ipad-wrapper .demo-bar{
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+
+#ipad-cont.device-horizontal{
+  width: 1520px;
+  position: relative;
+  overflow: visible;
+  
+}
+#ipad-cont.device-horizontal .ipad-wrapper {
+  position: relative;
+  margin-left:180px;
+}
+
+#ipad-cont.device-horizontal .ipad-wrapper .ipad-cont {
+  width:1024px;
+  height: 768px;
+  position: absolute;
+  top:241px;
+  left:-70px;
+}
+#ipad-cont.device-horizontal .ipad-wrapper .demo-bar{
+  width:1024px;
+  position: absolute;
+  top:580px;
+  left:271px;
+}
+#ipad-cont.device-horizontal .ipad-wrapper .demo-bar .ipad-time{
+  background-image: url(../images/ipad-time-wide.png);  
+}
+
+
+
+/*------VERTICAL MONITOR-------*/
+#vmonitor-cont {
+  width:820px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.vmonitor-wrapper {
+  background-image: url(../images/vmonitor-wrapper.png);
+  background-repeat: no-repeat;
+  width: 522px;
+  height: 912px;
+  padding-top:15px;
+  padding-left: 26px;
+  float: left;
+  margin-top: 80px;
+  position: relative;
+}
+.vmonitor-cont {
+  width: 505px;
+  height: 895px;
+  overflow: auto;
+  position: relative;
+  background-color: #ffffff;
+}
+
+
+
+
+/* ====================== CERNER BRAND COLORS ====================== */
+/*Cerner standard angle is forward facing and 20 degress.*/
+
+.cerner-blue-bg {
+  background-color: #0d94d2;
+}
+.cerner-blue-border {
+  border-color: #0d94d2;
+}
+.cerner-blue-text, a.cerner-blue-text {
+  color: #0d94d2;
+}
+
+/*From UX templates, not brand specific*/
+.cerner-dkblue-bg {
+  background-color: #0064A2;
+}
+.cerner-dkblue-border {
+  border-color: #0064A2;
+}
+.cerner-dkblue-text, a.cerner-dkblue-text {
+  color: #0064A2;
+}
+/*----*/
+.cerner-green-bg {
+  background-color: #7bc143;
+}
+.cerner-green-border {
+  border-color: #7bc143;
+}
+.cerner-green-text, a.cerner-green-text {
+  color: #7bc143;
+}
+
+.cerner-grey-bg {
+  background-color: #6a737b;
+}
+.cerner-grey-border {
+  border-color: #6a737b;
+}
+.cerner-grey-text, a.cerner-grey-text {
+  color: #6a737b;
+}
+
+.cerner-cyan-bg {
+  background-color: #4bb8ef;
+}
+.cerner-cyan-border {
+  border-color: #4bb8ef;
+}
+.cerner-cyan-text, a.cerner-cyan-text {
+  color: #4bb8ef;
+}
+
+.cerner-purple-bg {
+  background-color: #7c2b83;
+}
+.cerner-purple-border {
+  border-color: #7c2b83;
+}
+.cerner-purple-text, a.cerner-purple-text {
+  color: #7c2b83;
+}
+
+.cerner-orange-bg {
+  background-color: #f58025;
+}
+.cerner-orange-border {
+  border-color: #f58025;
+}
+.cerner-orange-text, a.cerner-orange-text {
+  color: #f58025;
+}
+
+.cerner-yellow-bg {
+  background-color: #fdb913;
+}
+.cerner-yellow-border {
+  border-color: #fdb913;
+}
+.cerner-yellow-text, a.cerner-yellow-text {
+  color: #fdb913;
+}
+.cerner-standard-text, a.cerner-standard-text {color: #393d41}
+
+
+
+/* ====================== COLORS ====================== */
+.med-darkest-bg {background-color: #373F42}
+.med-darkest-text {color: #373F42}
+.med-darkest-border {border-color: #373F42}
+
+.med-darker-bg {background-color: #595F62}
+.med-darker-text {color: #595F62}
+.med-darker-border {border-color: #595F62}
+
+.med-dark-bg {background-color: #7A7F82}
+.med-dark-text {color: #7A7F82}
+.med-dark-border {border-color: #7A7F82}
+
+.med-bg {background-color: #909496}
+.med-text{color: #909496}
+.med-border {border-color: #909496}
+
+.med-light-bg {background-color: #B2B5B6}
+.med-light-text {color: #B2B5B6}
+.med-light-border {border-color: #B2B5B6}
+
+.med-lighter-bg {background-color: #D3D4D5}
+.med-lighter-text {color: #D3D4D5}
+.med-lighter-border {border-color: #D3D4D5}
+
+.med-lightest-bg {background-color: #F4F4F4}
+.med-lightest-text {color: #F4F4F4}
+.med-lightest-border {border-color: #F4F4F4}
+
+.white-bg, .white-bg-hover {background-color: #ffffff}
+.white-bg-hover:hover {background-color: #F5F8FC}
+.white-text {color: #ffffff}
+.white-border {border-color: #ffffff}
+
+.acc-darkest-bg {background-color: #004C76}
+.acc-darkest-text {color: #004C76}
+.acc-darkest-border {border-color: #004C76}
+
+.acc-darker-bg {background-color: #0065A3}
+.acc-darker-text {color: #0065A3}
+.acc-darker-border {border-color: #0065A3}
+
+.acc-dark-bg {background-color: #007CC3}
+.acc-dark-text {color: #007CC3}
+.acc-dark-border {border-color: #007CC3}
+
+.acc-bg {background-color: #007CC3}
+.acc-text {color: #007CC3}
+.acc-border{border-color: #007CC3}
+
+.acc-light-bg {background-color: #33A8E6}
+.acc-light-text {color: #33A8E6}
+.acc-light-border {border-color: #33A8E6}
+
+.acc-lighter-bg {background-color: #CCE9F9}
+.acc-lighter-text {color: #CCE9F9}
+.acc-lighter-border{border-color: #CCE9F9}
+
+.acc-lightest-bg {background-color: #F2F9FD}
+.acc-lightest-text {color: #F2F9FD}
+.acc-lightest-border {border-color: #F2F9FD}
+
+.clin-low-bg {background-color: #0053E6}
+.clin-low-text {color: #0053E6}
+.clin-low-border {border-color: #0053E6}
+
+.clin-abnormal-bg {background-color: #654A08}
+.clin-abnormal-text {color: #654A08}
+.clin-abnormal-border {border-color: #654A08}
+
+.clin-high-bg {background-color: #FF6600}
+.clin-high-text {color: #FF6600}
+.clin-high-border {border-color: #FF6600}
+
+.clin-critical-bg {background-color: #CC0000}
+.clin-critical-text {color: #CC0000}
+.clin-critical-border {border-color: #CC0000}
+
+.required-fields {background-color: #FFFFCC}
+
+

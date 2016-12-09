@@ -1,0 +1,186 @@
+.master {width:100%}
+.leftrail {border-top:1px solid #CCC;width:199px;min-width: 199px;background:#EEF1F5;}
+#navthis {position: fixed;top: 12px;left: 0;}
+
+/* Workflow Navigation */
+#acutenav {list-style:none;margin:0;padding:0;}
+#acutenav li {font-family:Tahoma, Arial, sans-serif;font-size:12px;}
+#acutenav a span {display:block;height:22px;padding:5px 0 0 4px;}
+#acutenav a {height:26px;width:201px;color:#505050;display:block;text-decoration:none;padding:0;}
+#acutenav a:hover {background:#dedede;}
+#acutenav .current a {color:#FFF;background:#568ECB url('../images/nav-active.png') 0 100% no-repeat;}
+
+/* Workflow Condition filter */
+.condition-filters{
+  width: 100%;
+  padding:10px 0px;
+  position: fixed;
+  top: 0px;
+  background-color: #ffffff;
+}
+.condition-filters span{margin-right: 15px;}
+.condition-filters .filter{
+  border-bottom: 1px solid #ffffff;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
+  cursor: pointer;
+}
+.condition-filters span.active{
+  border-bottom: 1px solid #568ECB;
+}
+.condition-filter-space{
+  width: 100%;
+  height: 50px;
+}
+
+
+/* Workflow Components Area */
+#workflowcontainer{
+	margin-left:10px;
+	margin-right: 10px;
+}
+.component-wrapper{
+  width: 100%;
+  display: block;
+  padding-bottom:40px;
+}
+.component-cont{
+  display: block;
+  margin-top: 6px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.component-cont .component-cont-img {
+    margin-top: 13px;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+.component-header{
+  width: 100%;
+  border-bottom: 1px solid #006492;
+  position: relative;
+}
+.component-header:before{
+  border-top: 1px solid #A6C9D9;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0px;
+  bottom: -4px;
+  width: 100%
+}
+.component-header h2{
+  display: inline-block;
+  margin-left:10px;
+}
+.component-menu{
+  float: right;
+  display: block;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+.component-menu .menu{
+  float: left;
+}
+
+/*Workflow Component Menu Icon*/
+.menu {
+  position: relative;
+  padding:4px 14px 4px 4px;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.menu.active{border-color:#B2B5B6;}
+.menu-icon {
+  border-bottom: 6px double #1C1F21; 
+    border-top: 2px solid #1C1F21; 
+    content:"";
+    height: 2px; 
+    width:12px;
+    display: block;
+    position: relative;
+  }
+
+.menu-icon:after {
+  content: "";
+   width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 3px solid #1C1F21;
+  position: absolute;
+  left: 16px; 
+  top:2px;
+  }
+
+.menu.disabled  .menu-icon{
+  border-bottom: 6px double #B2B5B6; 
+  border-top: 2px solid #B2B5B6; 
+}
+
+.menu.disabled  .menu-icon:after {
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 3px solid #B2B5B6;
+  }
+.menu.disabled{cursor: default;}
+
+.menu-content{
+  display: none;
+  position: absolute;
+  top: 18px;
+  right: -1px;
+  border: 1px solid #B2B5B6;
+  background-color: #ffffff;
+  z-index: 1;
+  min-width: 50px;
+}
+.menu-content ul{
+  padding:0px;
+}
+.menu-content li{
+  list-style: none;
+  display: inline-block;
+  cursor: default;
+  width: 100%;
+  padding: 3px 0px 3px 0px;
+}
+.menu-content li span {
+  white-space: nowrap;
+  padding: 3px 20px 3px 20px;
+}
+.menu-content li:hover{
+  color: #fff;
+  background-color:#007CC3;
+}
+
+.menu-content li.disabled{
+  color: #909496;
+}
+.menu-content li.disabled:hover{
+  color: #909496;
+  background-color:#ffffff;
+}
+.menu-content li.linebreak{border-bottom: 1px solid #B2B5B6;}
+
+.loading-screen {
+  position: fixed;
+  top: 50px;
+  width: 1170px;
+  height: 100%;
+  background-color: rgba(255,255,255,0.7);
+  text-align: center;
+
+}
+.loading-screen span {
+  background-image: url('../images/loader.gif');
+  background-repeat: no-repeat;
+  width: 34px;
+  height: 34px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  display: inherit;
+}

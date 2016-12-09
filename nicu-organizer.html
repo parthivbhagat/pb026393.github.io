@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Revenue Cycle</title>
+    <link rel="stylesheet" href="powerchart-simulate/css/powerchart.css">
+</head>
+
+<body>
+<div id="windows10">
+    <div class="windows10-title">Powerchart</div>
+    <div class="windows10-icons"><img src="powerchart-simulate/images/windows10-icons.png"></div>
+</div>
+<div id="powerchart-wrapper">
+<div class="demo-bar" style="height:30px;">
+    
+    <div class="more-options" style="margin-top:0px;">
+        <span></span><span></span><span></span>
+    </div>
+</div><!-- END #demo-bar -->
+
+<div id="powerchart-containerI">
+<div id="powerchart-container">
+    
+    <div id="powerchart-body">
+        <div id="mPage-wrapper">
+        <div id="mPage-tab-cont">
+                <div id="tab-cont">
+                  <div class="tab active" tabId="1" content="cont-admit" label="Admit">NICU Organizer <span class="close"></span></div>
+                  
+                </div><!-- END #tab-cont -->
+                <div class="add-tab"></div>          
+        <div id="mPage-menu">
+          <div class="menu">
+                        <span class="menu-icon"></span>
+                        <div class="menu-content">
+                            <ul>
+                                <li class="linebreak"><span>Something Here</span></li>
+                                <li class="disabled"><span>Disabled Link</span></li>
+                                <li><span>Something</span></li>
+                                <li><span>Something Here</span></li>
+                                <li><span>Some link Goes Here</span></li>
+                            </ul>
+                        </div><!-- END .menu-content -->
+                    </div><!-- END .menu -->
+        </div><!-- END #mPage-menu -->
+      </div><!-- END #mPage-tab-cont -->
+            <div id="mPage-page-wrapper">
+                 <div id="mPage-page-cont">
+                    <div id="mPage-page" style="top:86px; width:1440px">
+
+                       <iframe class="iframeclass" src="powerchart-simulate/FWcontent/AmbulatoryOrganizer/MainAO.htm" width="100%" frameborder="0"></iframe>
+                      <div class="overlay iframeclass" style="display:none; overflow-y:scroll;">
+                        <div style="padding-bottom:30px">
+                        <img src="powerchart-simulate/FWcontent/AmbulatoryOrganizer/expandScreen.gif"/>
+                        </div>
+                      </div>
+
+                    </div><!-- END #mPage-page -->
+                </div><!-- END #mPage-page-cont -->
+            </div><!-- END #mPage-page-wrapper -->
+        </div><!-- END #mPage-wrapper -->
+    </div><!-- END #powerchart-body -->
+    </div><!-- END #powerchart-container -->
+</div><!-- END #powerchart-containerI -->
+</div><!-- END #powerchart-wrapper -->
+  <style>
+.overlay{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+  </style>
+}
+<!-- JAVASCRIPT LIBRARIES -->
+<script src="powerchart-simulate/js/jquery-2.1.4.min.js"></script>
+<script src="powerchart-simulate/js/powerchart.js"></script>
+<script>
+$(document).ready(function() {
+$(window).resize(sizeContent);
+        function sizeContent() {
+        //Get 'HTML' height as variable, subtract height of header area
+            var newHeight = $("html").height() - 64 + "px";
+            $(".iframeclass").css("height", newHeight);
+        }
+   sizeContent();      
+
+
+//LISTENER for iFrame Data
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    eventer(messageEvent, function (e) {
+       var data = e.data.split('|');
+       //SHOW OVERLAY
+       if (data[0] == 'overlay'){
+        $(".overlay").show();
+       }
+       
+      
+    }, false); 
+
+        
+}); // END $(document).ready
+</script>
+</body>
+
+    
+</html>

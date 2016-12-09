@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Script-01 - Discharge Workflow</title>
+  
+<link rel="stylesheet" href="../css/boilerplate.css">
+<link rel="stylesheet" href="../css/workflow.css">
+
+</head>
+<body>
+<div class="overlay">open</div>
+</body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../js/jquery.scrollTo.min.js"></script>
+<script src="../js/jquery.nav3.js"></script>
+
+<script>
+$(document).ready(function() {
+
+$(".overlay").click(function(){
+	window.parent.postMessage('overlay', "*");
+});
+
+//LISTENER for iFrame Data
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    eventer(messageEvent, function (e) {
+       var data = e.data.split('|');
+       //FOR MODAL WINDOW CALLS
+       if (data[0] == 'modal'){
+            $("#"+data[1]).dialog({
+                autoOpen: true,
+                width: data[2],
+                modal: true,
+                buttons: [
+                    {
+                        text: "Do something",
+                        // "class": 'special_class',
+                        click: function() {
+                            alert('affect moda content');
+                        }
+                    },
+                    {
+                        text: "Ok",
+                        click: function() {
+                            $(this).dialog( "close" );
+                        }
+                    },
+                    {
+                        text: "Cancel",
+                        click: function() {
+                            $(this).dialog( "close" );
+                        }
+                    }
+                ]
+            });    
+       }
+       //RESIZE IFRAME TO SIDE PANE AND COLLASPE
+      if (data[0] == 'pane'){
+            var oldh = $('#'+data[1]).attr('height');
+           if (oldh < data[2]){
+                var width = $('#'+data[1]).width();
+               $('#'+data[1]).parent().css('height', oldh);
+               $('#'+data[1]).css({
+                'position': 'absolute',
+                'z-index': '1',
+                'width': width
+               });
+               $('#'+data[1]).attr({
+                'oldh': oldh,
+                'height': data[2],
+               });
+           }
+           else{
+                $('#'+data[1]).parent().css('height', '');
+                $('#'+data[1]).css({
+                'position': 'relative',
+                'z-index': '0',
+                'width': '100%'
+               });
+                $('#'+data[1]).attr({
+                'oldh': oldh,
+                'height': data[2],
+               });
+           }
+       }         
+    }, false); 
+
+		
+}); // END $(document).ready
+</script>

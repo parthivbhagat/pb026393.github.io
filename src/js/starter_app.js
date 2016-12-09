@@ -139,9 +139,9 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
           var hr = byCodes('8867-4');
-		  var spo2 = byCodes('20564-1');
-		  var weight = byCodes('29463-7');
-		  var temp = byCodes('8310-5');
+		      var spo2 = byCodes('20564-1');
+		      var weight = byCodes('29463-7');
+		      var temp = byCodes('8310-5');
           var p = defaultPatient();          
           p.birthdate = dobStr;
           p.gender = gender;
@@ -217,11 +217,11 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
-	  hr: {value: ''},
-	  spo2: {value: ''},
-	  weight: {value: ''},
-	  temp: {value: ''},
-	  fatherName: {value: ''},
+	    hr: {value: ''},
+	    spo2: {value: ''},
+	    weight: {value: ''},
+	    temp: {value: ''},
+	    fatherName: {value: ''},
       motherName: {value: ''}
     }
   };
@@ -289,6 +289,13 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
+    $('#hr').html(p.hr);
+    $('#spO2').html(p.spo2);
+    $('#weight').html(p.weight);  
+    $('#temp').html(p.temp);
+    $('#fatherName').html(p.fatherName);
+    $('#motherName').html(p.motherName);
+    
   };
 
 })(window);

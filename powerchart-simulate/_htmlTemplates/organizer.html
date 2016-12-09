@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Revenue Cycle</title>
+	<link rel="stylesheet" href="../css/powerchart.css">
+</head>
+
+<body>
+<div id="windows10">
+    <div class="windows10-title">Organizer</div>
+    <div class="windows10-icons"><img src="../images/windows10-icons.png"></div>
+</div>
+<div id="powerchart-wrapper">
+
+
+<div id="powerchart-containerI">
+<div id="powerchart-container">
+    
+	<div id="powerchart-body">
+		<div id="mPage-wrapper">
+            <div id="mPage-page-wrapper">
+                 <div id="mPage-page-cont">
+                    <div id="mPage-page" style="top:15px; width:1440px">
+                       <iframe class="iframeclass" src="organizer-content.html" width="100%"></iframe>
+                      <div class="overlay" style="display:none"> <iframe class="iframeclass" src="" width="500"></iframe></div>
+
+                    </div><!-- END #mPage-page -->
+                </div><!-- END #mPage-page-cont -->
+            </div><!-- END #mPage-page-wrapper -->
+        </div><!-- END #mPage-wrapper -->
+	</div><!-- END #powerchart-body -->
+    </div><!-- END #powerchart-container -->
+</div><!-- END #powerchart-containerI -->
+<a href="endTitleTemplate.html" class="pc-next"><span></span></a>
+</div><!-- END #powerchart-wrapper -->
+</body>
+  <style>
+.overlay{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+  </style>
+}
+<!-- JAVASCRIPT LIBRARIES -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../js/powerchart.js"></script>
+<script>
+$(document).ready(function() {
+$(window).resize(sizeContent);
+        function sizeContent() {
+        //Get 'HTML' height as variable, subtract height of header area
+            var newHeight = $("html").height() - 25 + "px";
+            $(".iframeclass").css("height", newHeight);
+        }
+   sizeContent();      
+
+
+//LISTENER for iFrame Data
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    eventer(messageEvent, function (e) {
+       var data = e.data.split('|');
+       //SHOW OVERLAY
+       if (data[0] == 'overlay'){
+        $(".overlay").show();
+       }
+       
+      
+    }, false); 
+
+        
+}); // END $(document).ready
+</script>
+    
+</html>

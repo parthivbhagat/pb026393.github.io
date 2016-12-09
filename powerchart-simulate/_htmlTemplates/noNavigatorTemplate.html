@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Script-01 - Discharge Workflow</title>
+  
+<link rel="stylesheet" href="css/boilerplate.css">
+<link rel="stylesheet" href="css/workflow.css">
+
+</head>
+<body>
+<div id="workflowcontainer" style="height:1000px;">
+	
+Content Goes Here
+
+</div><!-- END #workflowcontainer -->
+</body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../js/jquery.scrollTo.min.js"></script>
+<script src="../js/jquery.nav3.js"></script>
+
+<script>
+$(document).ready(function() {
+
+	$('#acutenav').onePageNav({
+		begin: function() {
+		console.log('start')
+		},
+		end: function() {
+		console.log('stop')
+		}
+	});
+		
+}); // END $(document).ready
+</script>

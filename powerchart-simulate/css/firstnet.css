@@ -1,0 +1,476 @@
+/* firstnet.css 
+-------------------------------------------------- */
+body.width1385 #windows10,
+body.width1385 #powerchart-container,
+body.width1385 #powerchart-wrapper,
+body.width1385 #mPage-page{
+  width: 1384px;
+}
+
+body.width1440 #windows10,
+body.width1440 #powerchart-container,
+body.width1440 #powerchart-wrapper,
+body.width1440 #mPage-page{
+  width: 1440px;
+}
+body.width1660 #windows10,
+body.width1660 #powerchart-container,
+body.width1660 #powerchart-wrapper,
+body.width1660 #mPage-page {
+  width: 1660px;
+}
+body.width1765 #windows10,
+body.width1765 #powerchart-container,
+body.width1765 #powerchart-wrapper,
+body.width1765 #mPage-page {
+  width: 1769px;
+}
+
+body.width1820 #windows10,
+body.width1820 #powerchart-container,
+body.width1820 #powerchart-wrapper,
+body.width1820 #mPage-page {
+  width: 1820px;
+}
+body.width1920 #windows10,
+body.width1920 #powerchart-container,
+body.width1920 #powerchart-wrapper,
+body.width1920 #mPage-page {
+  width: 1920px;
+}
+
+
+
+
+.tracking-board #mPage-page .iframeclass{
+border: 0 none;
+}
+
+
+.tracking-board .overlay{
+border-left:1px solid gray;
+box-shadow: -5px 10px 10px rgba(100,100,100,0.5);
+top:149px;
+}
+
+.tracking-board.test-content{
+background: #ffffff;
+}
+
+
+.universal-window.test-content{
+background: #f4f4f4;
+}
+
+.user-phone .phone-wrapper .demo-bar,
+.user-ipad .ipad-wrapper .demo-bar{
+height:20px;
+background-color: #888888;
+}
+.user-phone .phone-cont .demo-bar-space,
+.user-ipad .ipad-cont .demo-bar-space{
+height: 20px;
+}
+.user-phone .phone-wrapper .demo-bar-name,
+.user-ipad .ipad-wrapper .demo-bar-name{display: none;}
+.user-phone .phone-wrapper .demo-bar-ar,
+.user-ipad .ipad-wrapper .demo-bar-ar{display: none;}
+
+
+
+.patient-story #mPage-tab-cont .tab {
+    width: 150px;
+}
+.patient-story #mPage-page {
+    border-right: 0px none;
+}
+
+
+
+
+/* Text Messaging Screens */
+.text-message #text-messages{
+position: relative;
+left: 0;
+transition: left 450ms;
+height: 667px;
+width: 750px;
+}
+.text-message #text-messages .panel{
+display:block;
+position: absolute;
+top: 0;
+}
+
+.text-message #text-messages #first{
+left:0;
+cursor: pointer;
+}
+.text-message #text-messages #second{
+left:375px;
+}
+.text-message .new-iphone-time{
+display: block;
+width: 375px;
+height: 20px;
+background: #ffffff url(../EmergencyMedicine/FWcontent/TextMessagesFamily/1x/1_Mailbox.png) top left no-repeat;
+position: absolute;
+top:0;
+left:0;
+overflow: hidden;
+}
+.text-message .new-iphone-time.later{
+background-image:  url(../EmergencyMedicine/FWcontent/TextMessagesFamily/1x/2_Mailbox.png);}
+
+.text-message #text-messages .target-box{
+display: block;
+position:absolute;
+top: 108px;
+left: 0px;
+height:96px;
+width: 375px;
+cursor: pointer;
+box-sizing: border-box;
+transition: border 100ms, box-shadow 100ms;
+}
+.text-message #text-messages .target-box:hover{
+box-shadow: 0 0 5px #1e90ff;
+border: 1px solid #1e90ff;
+}
+
+.text-message #text-messages .animate-back{
+display: block;
+position:absolute;
+top: 0;
+left: 375px;
+height:70px;
+width: 140px;
+cursor: pointer;
+}
+
+.text-message #text-messages .highlight-link{
+display: block;
+position:absolute;
+top: 385px;
+left: 400px;
+height:24px;
+width: 245px;
+cursor: pointer;
+box-sizing: border-box;
+transition: border 100ms, box-shadow 100ms;
+}
+.text-message #text-messages .highlight-link:hover{
+box-shadow: 0px 4px 7px -6px #1e90ff;
+border-bottom: 1px solid #1e90ff;
+background-color: rgba(30, 144, 255,0.10);
+}
+
+
+
+/* Virtual Visit Screens */
+.user-ipad.virtual-visit  .ipad-cont{
+height: 1025px;
+}
+.user-ipad.virtual-visit  .ipad-wrapper .demo-bar{
+background-color: transparent;
+}
+.user-ipad.virtual-visit .ipad-cont  .demo-bar-space{
+height: 0px;
+display: none;
+}
+
+
+
+
+.virtual-visit #ipad-virtualvisit{
+position: relative;
+left: 0;
+transition: left 450ms;
+overflow: hidden;
+height: 1025px;
+width: 768px;
+}
+.virtual-visit #ipad-virtualvisit .panel{
+display:block;
+position: absolute;
+top: 0;
+}
+.virtual-visit #ipad-virtualvisit #first{
+left:0;
+cursor: pointer;
+}
+.virtual-visit #ipad-virtualvisit #second{
+left: 0;
+}
+.virtual-visit #ipad-virtualvisit .target-box{
+display: block;
+position:absolute;
+top: 525px;
+left: 435px;
+height:68px;
+width: 263px;
+cursor: pointer;
+box-sizing: border-box;
+transition: border 200ms, box-shadow 200ms;
+border-radius: 4px;
+}
+.virtual-visit #ipad-virtualvisit .target-box:hover{
+box-shadow: 0 0 6px 1px #ffffff;
+border: 1px solid #ffffff;
+}
+
+.virtual-visit #ipad-virtualvisit .animate-back{
+display: none;
+}
+
+
+
+
+/* Trauma Alerts */
+.trauma-alert .watch-wrapper{
+padding-top:75px;
+}
+
+.trauma-alert .watch-cont{
+background-color:#000000;
+}
+.trauma-alert .watch-cont #trauma-watch-alert{
+display: block;
+height: 390px;
+width: 312px;
+margin-left: 3px;
+}
+
+
+.tracking-board .ems-board .slice{display:block;}
+.tracking-board .onc-board .slice{display:block;}
+
+.tracking-board .modal{
+display: block;
+background: #ffffff url('../EmergencyMedicine/FWcontent/LaunchPoint_Oncology/ModalDocumentFrame.png') top left no-repeat;
+height: 1024px;
+width: 1365px;
+position: absolute;
+top:10px;
+left: 50%;
+margin-left:-682px;
+box-sizing:border-box;
+box-shadow: 4px 4px 4px rgba(100,100,100,0.5);
+}
+
+.tracking-board .modal iframe{
+  position: absolute;
+  top: 66px; left: 17px;
+  height: 940px;
+  width: 1339px;
+}
+.tracking-board .modal .close-btn{
+  position: absolute;
+  top: 0px; right: 0px;
+  height: 25px; width: 38px;
+  text-align: center;
+  font-weight: normal;
+  font-size: 0;
+}
+.tracking-board .modal .close-btn:hover{
+  background: crimson;
+  display: block;
+  color: rgb(255,191,190);
+  font-size: 14px;
+}
+
+.tracking-board .modal .windows10-bar{
+    margin-right: auto;
+    margin-left: auto;
+    height: 25px;
+    background-color: #1A93D7;
+    color: #ffffff;
+    width:1365px;
+}
+.tracking-board .modal .windows10-bar .windows10bar-title {
+    margin-left: 10px;
+    float: left;
+    margin-top: 3px;
+}
+.tracking-board .modal .windows10-bar .windows10bar-icons {
+    float: right;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+
+.tracking-board .modal-mask{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(50,50,50,0.7);
+  display: block;
+  top:0;
+  left;0;
+  right: 0;
+  bottom: 0;
+}
+
+
+.tracking-board .slice{
+  margin: 0;
+  cursor: pointer;
+ }
+
+.tracking-board .ems-board .action{
+ cursor: pointer;
+}
+
+.tracking-board .ems-board .bed-cell{
+  margin: 0;
+  cursor: pointer;
+  height: 40px;
+  width: 86px;
+  position: absolute;
+  top:186px;
+  left: 0px;
+}
+.tracking-board #row {
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: border 50ms, box-shadow 50ms;
+  border-top:1px solid transparent;
+  border-bottom:1px solid transparent;
+  width: 1769px;
+  height: 42px;
+}
+.tracking-board #row:hover{
+box-shadow: 0px 1px 2px -2px #1e90ff;
+border-color: rgba(30, 144, 255,0.60);
+background-color: rgba(30, 144, 255,0.10);
+}
+
+
+.tracking-board .onc-board .event-icons{
+  margin: 0;
+  cursor: pointer;
+  height: 38px;
+  width: 182px;
+  position: absolute;
+  top: 221px;
+  left: 107px;
+}
+.tracking-board .onc-board .event-icons:hover{
+  box-shadow: 0px 4px 7px -6px #1e90ff;
+  background-color: rgba(30, 144, 255,0.10);
+}
+
+
+
+
+
+.universal-window{
+background: #f4f4f4;
+}
+.universal-window .ems-uwindow{
+position: relative;
+}
+.universal-window .ems-uwindow .hotspot{
+display: block;
+position: absolute;
+top:387px;
+left:369px;
+height:28px;
+width:250px;
+cursor: pointer;
+box-sizing: border-box;
+transition: border 100ms, box-shadow 100ms;
+}
+.universal-window .ems-uwindow .hotspot:hover{
+box-shadow: 0px 4px 7px -6px #1e90ff;
+border-bottom: 1px solid #1e90ff;
+background-color: rgba(30, 144, 255,0.10);
+}
+
+
+.universal-window .onc-uwindow{
+position: relative;
+}
+.universal-window .onc-uwindow .hotspot{
+display: block;
+position: absolute;
+top:594px;
+left:25px;
+height:48px;
+width:208px;
+cursor: pointer;
+box-sizing: border-box;
+transition: border 100ms, box-shadow 100ms;
+}
+.universal-window .onc-uwindow .hotspot:hover{
+box-shadow: 0px 4px 6px -5px #1e90ff;
+border-bottom: 1px solid #1e90ff;
+background-color: rgba(30, 144, 255,0.10);
+}
+ 
+
+
+/* fixes position */
+
+.universal-window .ems-uwindow .close-btn,
+.universal-window .onc-uwindow .close-btn{
+display: block;
+position: absolute;
+top: 825px;
+right: 0px;
+height:56px;
+width:140px;
+cursor: pointer;
+}
+.universal-window .ems-uwindow .close-btn:hover,
+.universal-window .onc-uwindow .close-btn:hover{
+
+}
+
+.universal-window .ems-uwindow .close-x,
+.universal-window .onc-uwindow .close-x{
+display: block;
+position: absolute;
+top: -4px;
+right: 0px;
+height:56px;
+width:70px;
+cursor: pointer;
+}
+.universal-window .ems-uwindow .close-x:hover,
+.universal-window .onc-uwindow .close-x:hover{
+
+
+}
+
+
+
+
+
+/* fix position of next button */
+.title-slide #content h1{
+text-align: center;
+margin: 0 auto;
+margin-top:415px;
+font-size: 120px;
+}
+
+
+/*
+a.scene-link, a.pc-next{
+position:fixed !important;
+right:60px !important;
+right:27px !important;
+top:50% !important;
+margin-top:-25px !important;
+}
+*/
+
+
+
+
+/* extra */
+.maynotneed #mPage-page{
+width: 100%;
+border-right:0 none;
+}

@@ -1,0 +1,111 @@
+==========NOTE==============
+Data must be separated with |
+Don’t delete that!
+
+
+====OPEN MODAL=====
+On the element that needs to trigger the modal, add: 
+class="modal" content="id|500"
+
+The id needs to be the id of the content in the workflow HTML file that the modal needs to open.
+The ## is to set the width of your modal.
+
+
+====OPEN/ CLOSE SIDE PANEL====
+On the element that needs to trigger the resize, add: 
+class="iframe-resize" content="id|250"
+
+The id needs to be the id thats assigned to the iframe in the workflow HTML file (example below) that needs to change size
+the number is the height you need the component to be.
+
+IE in FW file: <area shape="rect" coords="508,7,990,588" href="closed.htm" alt=""  class="iframe-resize" newh="vitals-iframe|250"/>
+
+IE in workflow HTML file: <iframe id="vitals-iframe" width="100%" height="200" style="overflow: hidden;" src="/Users/jk042875/Documents/SVN/Vision2020/Prototype Framework/test2/home.htm" class="iframeclass" frameBorder="0"></iframe>
+
+The height you set on the <iframe> tag is the height you want the iframe to start out being when the side panel is not open.
+
+—-To trigger an close side panel—- 
+Use the same 
+class="iframe-resize" content="id|250"
+
+But now the height you set here is the height you want the iframe to be when the side panel is closed. This *must* be shorter than the height you enlarged it to.
+
+
+====NEW VIEWPOINT TAB====
+On the element that needs to open a new tab, add:
+class="newTab" content="ID|label"
+
+The id is the id set to the content in the power chart wrapper HTML that will open in this new tab.
+The label is what you want the label to be in the tab.
+
+
+
+====SMARTZONE====
+On the element to trigger a smart alert, add:
+class="sz-trigger" content="alert-critical|Header|alert text from hot spot|button|success!"
+
+1) The alert type, this defines the icon used in SZ.
+2) Header used in bubble
+3) Message
+4) Button text, if no button leave blank
+5) Success message
+
+ ====== Smartzone alert types =======
+critical = red     general = blue    important = yellow
+	cds-critical
+	cds-general
+	cds-important
+	message-critical
+	message-general
+	message-important
+	reminder-critical
+	reminder-general
+	reminder-important
+	alert-critical
+	alert-general
+	alert-important
+
+
+
+
+<!-- ========================INSTRUCTIONS=========================== -->
+
+REMOVE bdcolor=#ffffff from the <body> tag.
+
+<!-- ====================ADD CODE BEFORE </body> in your FW html file=============================== -->
+
+<style>
+body::-webkit-scrollbar {display: none;}
+body{overflow: hidden;}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../js/jquery-/2.1.4.min.js"><\/script>');</script>  
+<script>
+$(document).ready(function() {
+	//OPEN MODAL
+	  $(".modal").click(function(){
+	    var content = $(this).attr('content');
+	   window.parent.postMessage('modal|'+content, "*");
+	  });
+
+	  //SIDE PANEL
+	  $(".iframe-resize").click(function(){
+	    var content = $(this).attr('content');
+	   window.parent.postMessage('pane|'+content, "*");
+	  });
+
+	  //NEW VIEWPOINT TAB
+	  $(".newTab").click(function(){
+	    var content = $(this).attr('content');
+	   window.top.postMessage('tab|'+content, "*");
+	  });
+
+
+	  //SMART ZONE
+	  $(".sz-trigger").click(function(){
+	    var content = $(this).attr('content');
+	   window.top.postMessage('sz|'+content, "*");
+	  });
+    
+});
+</script>

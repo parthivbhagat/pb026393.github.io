@@ -237,7 +237,7 @@
       });
       if (BP) { 
         observation.valueQuantity = BP.valueQuantity;
-        //formattedBPObservations.push(observation);
+        formattedBPObservations.push(observation);
       }
     });
     console.log(formattedBPObservations);
@@ -285,8 +285,12 @@
     $('#birthdate').html(p.birthdate);  
     $('#age').html(p.age);
     $('#height').html(p.height);
-    $('#systolicbp').html(p.systolicbp);
-    $('#diastolicbp').html(p.diastolicbp);
+    var sysnum = p.systolicbp.substr(0,p.systolicbp.indexOf(' '));
+    $('#systolicbp').html(sysnum);
+    //$('#systolicbp').html(p.systolicbp);
+    var diasnum = p.diastolicbp.substr(0,p.diastolicbp.indexOf(' '));    
+    $('#diastolicbp').html(diasnum);
+    //$('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
     $('#hr').html(p.hr);
